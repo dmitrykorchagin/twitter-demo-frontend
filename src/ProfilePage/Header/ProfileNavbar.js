@@ -1,18 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid } from "react-flexbox-grid";
+import { NavLink } from "react-router-dom";
+import { Grid, Row, Col } from "react-flexbox-grid";
 import avatar from "./img/Avatar.png";
 import more from "./img/more.svg";
 
 const ProfileNavbar = styled.div`
   width: 100%;
   box-shadow: 0px 2px 2px #b0b8be;
-`;
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
 `;
 
 const ProfileInfo = styled.div`
@@ -36,19 +31,24 @@ const Avatar = styled.a`
 
 const ProfileNav = styled.div`
   display: flex;
-  justify-content: center;
-  margin-left: 18px;
+  justify-content: flex-start;
   align-items: center;
 `;
 
-const NavItem = styled.a`
+const ProfileNavLink = styled(NavLink)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin-right: 41px;
+  padding: 8px 15px;
+  margin-right: 21px;
   text-decoration: none;
+  border-bottom: 3px solid transparent;
+  border-color: ${props =>
+    props.activeClassName === "active" ? "#1da1f2" : "transparent"};
+  text-decoration: none;
+  &:hover {
+    border-color: #1da1f2;
+  }
 `;
 
 const Text = styled.span`
@@ -64,23 +64,27 @@ const Amount = Text.extend`
 `;
 
 const Rightnav = styled.div`
-  align-items: center;
-  position: absolute;
-  right: 0;
+  display: flex;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  justify-content: flex-end;
 `;
 
 const FollowBtn = styled.button`
-  padding: 9px 27px;
+  padding: 9px 25px;
   border-radius: 100px;
   border: 1px solid #1da1f2;
   color: #1da1f2;
-  margin-left: ;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
 `;
 
 const Dropmenu = styled.button`
+  align-self: center;
   height: 14px;
   width: 4px;
-  margin-left: 18px;
+  margin-left: 13px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -89,44 +93,48 @@ const Dropmenu = styled.button`
 
 export default () => {
   return (
-    <div>
-      <ProfileNavbar>
-        <Grid>
-          <Container>
+    <ProfileNavbar>
+      <Grid>
+        <Row>
+          <Col lg={3}>
             <ProfileInfo>
               <ProfileAvatar>
                 <Avatar />
               </ProfileAvatar>
             </ProfileInfo>
+          </Col>
+          <Col lg={6}>
             <ProfileNav>
-              <NavItem href="#">
+              <ProfileNavLink exact to="/EveryInteract/tweets">
                 <Text>Tweets</Text>
                 <Amount>8,058</Amount>
-              </NavItem>
-              <NavItem>
+              </ProfileNavLink>
+              <ProfileNavLink exact to="/EveryInteract/following">
                 <Text>Following</Text>
                 <Amount>721</Amount>
-              </NavItem>
-              <NavItem>
+              </ProfileNavLink>
+              <ProfileNavLink exact to="/EveryInteract/followers">
                 <Text>Followers</Text>
                 <Amount>1,815</Amount>
-              </NavItem>
-              <NavItem>
+              </ProfileNavLink>
+              <ProfileNavLink exact to="/EveryInteract/likes">
                 <Text>Likes</Text>
                 <Amount>460</Amount>
-              </NavItem>
-              <NavItem>
+              </ProfileNavLink>
+              <ProfileNavLink exact to="/EveryInteract/list">
                 <Text>List</Text>
                 <Amount>2</Amount>
-              </NavItem>
+              </ProfileNavLink>
             </ProfileNav>
+          </Col>
+          <Col lg={3}>
             <Rightnav>
               <FollowBtn>Follow</FollowBtn>
               <Dropmenu />
             </Rightnav>
-          </Container>
-        </Grid>
-      </ProfileNavbar>
-    </div>
+          </Col>
+        </Row>
+      </Grid>
+    </ProfileNavbar>
   );
 };

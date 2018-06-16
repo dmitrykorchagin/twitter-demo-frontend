@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import "./App.css";
-import Header from "./Profile/Header/index";
+import ProfilePage from "./ProfilePage";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Redirect from="/" to="/EveryInteract" />
+          <Route exact path="/EveryInteract" component={ProfilePage} />
+        </div>
+      </BrowserRouter>
     );
   }
 }
