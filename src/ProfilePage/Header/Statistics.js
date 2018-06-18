@@ -5,7 +5,7 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import avatar from "./img/Avatar.png";
 import more from "./img/more.svg";
 
-const ProfileNavbar = styled.div`
+const Statistics = styled.div`
   width: 100%;
   box-shadow: 0px 2px 2px #b0b8be;
 `;
@@ -17,7 +17,7 @@ const ProfileInfo = styled.div`
 
 const ProfileAvatar = styled.div``;
 
-const Avatar = styled.a`
+const AvatarImage = styled.a`
   position: absolute;
   border-radius: 50%;
   top: -120px;
@@ -43,9 +43,10 @@ const ProfileNavLink = styled(NavLink)`
   margin-right: 21px;
   text-decoration: none;
   border-bottom: 3px solid transparent;
-  border-color: ${props =>
-    props.activeClassName === "active" ? "#1da1f2" : "transparent"};
-  text-decoration: none;
+
+  &.active {
+    border-color: #1da1f2;
+  }
   &:hover {
     border-color: #1da1f2;
   }
@@ -93,13 +94,13 @@ const Dropmenu = styled.button`
 
 export default () => {
   return (
-    <ProfileNavbar>
+    <Statistics>
       <Grid>
         <Row>
           <Col lg={3}>
             <ProfileInfo>
               <ProfileAvatar>
-                <Avatar />
+                <AvatarImage />
               </ProfileAvatar>
             </ProfileInfo>
           </Col>
@@ -135,6 +136,6 @@ export default () => {
           </Col>
         </Row>
       </Grid>
-    </ProfileNavbar>
+    </Statistics>
   );
 };

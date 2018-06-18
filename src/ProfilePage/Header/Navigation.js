@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Grid } from "react-flexbox-grid";
 import profileimage from "./img/profileimage.jpg";
 import logo from "./img/twitter-logo.svg";
-import searchbtn from "./img/search-button.svg";
+import search from "./img/search.svg";
 import avatar from "./img/avatar-menu.jpg";
 import homeIcon from "./img/home.svg";
 import momentsIcon from "./img/moments.svg";
@@ -26,15 +26,18 @@ const Navigation = styled.nav`
   align-items: center;
 `;
 
-const NavigationIcon = styled.img``;
+const NavigationIcon = styled.img`
+  margin-right: 6px;
+  align-items: center;
+`;
 
 const Home = styled(NavLink)`
+  display: flex;
   font-size: 13px;
   line-height: 19px;
-  margin-left: 6px;
   margin-right: 25px;
   padding-top: 13px;
-  padding-bottom: 13px;
+  padding-bottom: 10px;
   font-weight: bold;
   color: #667580;
   text-decoration: none;
@@ -79,11 +82,14 @@ const FormInput = styled.input`
   border-radius: 100px;
   padding: 8px 12px;
   align-items: center;
-  outline: none;
   font-size: 12px;
-  line-height: 14px;
-  letter-spacing: 0.01px;
   width: 220px;
+
+  &:focus {
+    background: #fff;
+    border: 2px solid #1da1f2;
+    outline: none;
+  }
 
   @media (max-width: 922px) {
     width: 129px;
@@ -142,20 +148,20 @@ export default () => {
       <Grid>
         <Header>
           <Navigation>
-            <NavigationIcon src={homeIcon} />
             <Home exact to="/">
+              <NavigationIcon src={homeIcon} />
               Home
             </Home>
-            <NavigationIcon src={momentsIcon} />
             <Moments exact to="/EveryInteract/moments">
+              <NavigationIcon src={momentsIcon} />
               Moments
             </Moments>
-            <NavigationIcon src={notificationsIcon} />
             <Notifications exact to="/EveryInteract/notification">
+              <NavigationIcon src={notificationsIcon} />
               Notification
             </Notifications>
-            <NavigationIcon src={messagesIcon} />
             <Messages exact to="/EveryInteract/likes">
+              <NavigationIcon src={messagesIcon} />
               Messages
             </Messages>
           </Navigation>
@@ -168,7 +174,7 @@ export default () => {
                 placeholder="Search Twitter"
               />
               <SearchBtn>
-                <img src={searchbtn} alt="search button" />
+                <img src={search} alt="search button" />
               </SearchBtn>
             </HeaderForm>
             <AvatarLink>
