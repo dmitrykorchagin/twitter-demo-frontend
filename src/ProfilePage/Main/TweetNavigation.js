@@ -26,9 +26,11 @@ const NavigationLink = styled(NavLink)`
   margin-right: 15px;
   padding-top: 15px;
   padding-bottom: 10px;
+  color: #1da1f2;
 
-  color: ${props =>
-    props.activeClassName === "selected" ? "#14171a" : "#1da1f2"};
+  &.active {
+    color: #14171a;
+  }
   &:hover {
     text-decoration: ${props =>
       props.activeClassName === "selected" ? "none" : "underline"};
@@ -39,7 +41,7 @@ export default () => {
   return (
     <NavigationList>
       <Navigation>
-        <NavigationLink exact to="/EveryInteract" activeClassName="selected">
+        <NavigationLink exact to="/EveryInteract" activeClassName="active">
           Tweets
         </NavigationLink>
       </Navigation>

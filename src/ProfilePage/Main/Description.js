@@ -85,7 +85,6 @@ const LinkIcon = LocationIcon.extend``;
 const LinkAdress = styled.a`
   font-size: 14px;
   line-height: 14px;
-  letter-spacing: 0.01px;
   color: #006dc0;
   margin-right: 124px;
   margin-left: 8px;
