@@ -128,7 +128,6 @@ const TweetBtn = styled.button`
   font-weight: bold;
   font-size: 14px;
   line-height: 14px;
-  letter-spacing: 0.01px;
   padding: 8px 16px;
   color: #fff;
   cursor: pointer;

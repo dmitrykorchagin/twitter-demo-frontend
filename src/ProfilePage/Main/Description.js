@@ -17,7 +17,6 @@ const NickLink = styled(Link)`
   font-size: 22px;
   line-height: 22px;
   font-weight: bold;
-  letter-spacing: 0.02px;
   text-decoration: none;
   color: #14171a;
   margin-bottom: 6px;
@@ -36,7 +35,6 @@ const FollowLink = styled(Link)`
   color: #697787;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: 0.01px;
   cursor: pointer;
   text-decoration: none;
 `;
@@ -45,7 +43,6 @@ const Follow = styled.span`
   margin-left: 8px;
   font-size: 12px;
   line-height: 12px;
-  letter-spacing: 0.01px;
   color: #697787;
 `;
 
@@ -54,7 +51,6 @@ const ProfileBio = styled.div`
   font-size: 14px;
   line-height: 20px;
   color: #14171a;
-  letter-spacing: 0.01px;
   padding-right: 18px;
 `;
 
@@ -104,7 +100,6 @@ const Tweet = styled.button`
   font-size: 14px;
   line-height: 14px;
   font-weight: bold;
-  letter-spacing: 0.01px;
   cursor: pointer;
   border: none;
   margin-right: 5px;
