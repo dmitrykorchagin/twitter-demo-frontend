@@ -13,7 +13,6 @@ import avatar6 from "../img/avatar-6.jpg";
 const Followers = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
 `;
 
 const FollowersList = styled.ul`
@@ -22,7 +21,8 @@ const FollowersList = styled.ul`
   flex-direction: row;
   list-style: none;
   padding: 0;
-  margin: 8px 0 30px;
+  margin: 0;
+  margin-top: 8px;
 `;
 
 export default () => {

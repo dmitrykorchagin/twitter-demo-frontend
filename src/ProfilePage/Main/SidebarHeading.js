@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 const SideHeading = styled.div`
   display: flex;
   flex-direction: row;
+  margin-top: 20px;
 `;
 
 const SideIcon = styled.img``;
