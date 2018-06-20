@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import TweetNavigation from "./TweetNavigation";
 import Tweet from "./Tweet";
-import tweetImg from "./img/post.jpg";
-import tweet3Img from "./img/post3.jpg";
-import avatar from "./img/avatar.jpg";
+import tweetImg from "../img/post.jpg";
+import tweet3Img from "../img/post3.jpg";
+import avatar from "../img/avatar.jpg";
 
 const Tweets = styled.section`
   margin-top: 10px;

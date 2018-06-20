@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import commentsIcon from "./img/comments.svg";
-import retweetIcon from "./img/retweet.svg";
-import lovesIcon from "./img/loves.svg";
-import envelopeIcon from "./img/envelope.svg";
-import pinnedIcon from "./img/pinned.svg";
+import commentsIcon from "../img/comments.svg";
+import retweetIcon from "../img/retweet.svg";
+import lovesIcon from "../img/loves.svg";
+import envelopeIcon from "../img/envelope.svg";
+import pinnedIcon from "../img/pinned.svg";
 
 const PinnedTweet = styled.span`
   font-size: 12px;
