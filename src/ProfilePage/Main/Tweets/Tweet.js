@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Action from "./Action";
 import commentsIcon from "../img/comments.svg";
 import retweetIcon from "../img/retweet.svg";
 import lovesIcon from "../img/loves.svg";
@@ -52,9 +53,9 @@ const AtNick = Nick.extend`
   color: #707e88;
 `;
 
-const TweetDate = AtNick.extend``;
+const Time = AtNick.extend``;
 
-const TweetAvatar = styled.img`
+const Avatar = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -63,7 +64,7 @@ const TweetAvatar = styled.img`
   top: 0;
 `;
 
-const TweetText = styled.p`
+const Text = styled.p`
   font-size: 25px;
   font-weight: 300;
 `;
@@ -78,23 +79,6 @@ const ActionList = styled.ul`
   align-items: center;
   padding: 0;
   margin: 0;
-`;
-
-const Action = styled.li`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  margin: 0;
-  margin-top: 15px;
-  margin-right: 38px;
-`;
-
-const ActionIcon = styled.img``;
-
-const ActionCount = styled.span`
-  font-size: 13px;
-  line-height: 15px;
-  margin-left: 10px;
 `;
 
 export default ({
@@ -121,29 +105,17 @@ export default ({
         <Header>
           <Nick>{nick}</Nick>
           <AtNick>{atNick}</AtNick>
-          <TweetDate>• {date}</TweetDate>
-          <TweetAvatar src={avatar} />
+          <Time>• {date}</Time>
+          <Avatar src={avatar} />
         </Header>
-        <TweetText>{text}</TweetText>
+        <Text>{text}</Text>
         {img && <TweetImg src={img} alt="post image" />}
       </Tweet>
       <ActionList>
-        <Action>
-          <ActionIcon src={commentsIcon} alt="comments icon" />
-          <ActionCount>{comments > 0 && comments}</ActionCount>
-        </Action>
-        <Action>
-          <ActionIcon src={retweetIcon} alt="retweet icon" />
-          <ActionCount>{retweets > 0 && retweets}</ActionCount>
-        </Action>
-        <Action>
-          <ActionIcon src={lovesIcon} alt="comments icon" />
-          <ActionCount>{loves > 0 && loves}</ActionCount>
-        </Action>
-        <Action>
-          <ActionIcon src={envelopeIcon} alt="comments icon" />
-          <ActionCount>{envelope > 0 && envelope}</ActionCount>
-        </Action>
+        <Action icon={commentsIcon} count={comments > 0 && comments} />
+        <Action icon={retweetIcon} count={retweets > 0 && retweets} />
+        <Action icon={lovesIcon} count={loves > 0 && loves} />
+        <Action icon={envelopeIcon} count={envelope > 0 && envelope} />
       </ActionList>
     </TweetWrap>
   );
