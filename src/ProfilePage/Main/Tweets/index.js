@@ -17,9 +17,9 @@ export default () => {
 
       <Tweet
         pinned={true}
-        tweetNick="Every Interact"
-        tweetAtNick="@EveryInteract"
-        tweetAvatar={avatar}
+        nick="Every Interact"
+        atNick="@EveryInteract"
+        avatar={avatar}
         date="2 Mar 2015"
         text="We’ve made some more resources for all you wonderful #design folk everyinteraction.com/resources/ #webdesign #UI"
         img={tweetImg}
@@ -29,9 +29,9 @@ export default () => {
       />
       <Tweet
         pinned={false}
-        tweetNick="Every Interact"
-        tweetAtNick="@EveryInteract"
-        tweetAvatar={avatar}
+        nick="Every Interact"
+        atNick="@EveryInteract"
+        avatar={avatar}
         date="23h"
         text="Our new website concept; Taking you from… @ Every Interaction instagram.com/p/BNFGrfhBP3M/"
         img={false}
@@ -41,9 +41,9 @@ export default () => {
       />
       <Tweet
         pinned={false}
-        tweetNick="Every Interact"
-        tweetAtNick="@EveryInteract"
-        tweetAvatar={avatar}
+        nick="Every Interact"
+        atNick="@EveryInteract"
+        avatar={avatar}
         date="Nov 18"
         text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
         img={tweet3Img}

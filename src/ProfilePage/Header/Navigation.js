@@ -26,7 +26,7 @@ const Navigation = styled.nav`
   align-items: center;
 `;
 
-const NavigationIcon = styled.img`
+const Icon = styled.img`
   margin-right: 6px;
   align-items: center;
 `;
@@ -148,19 +148,19 @@ export default () => {
         <Header>
           <Navigation>
             <Home exact to="/">
-              <NavigationIcon src={homeIcon} />
+              <Icon src={homeIcon} />
               Home
             </Home>
             <Moments exact to="/EveryInteract/moments">
-              <NavigationIcon src={momentsIcon} />
+              <Icon src={momentsIcon} />
               Moments
             </Moments>
             <Notifications exact to="/EveryInteract/notification">
-              <NavigationIcon src={notificationsIcon} />
+              <Icon src={notificationsIcon} />
               Notification
             </Notifications>
             <Messages exact to="/EveryInteract/likes">
-              <NavigationIcon src={messagesIcon} />
+              <Icon src={messagesIcon} />
               Messages
             </Messages>
           </Navigation>

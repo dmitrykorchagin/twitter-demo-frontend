@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const RecommendFollowers = styled.div`
   display: flex;
@@ -10,13 +10,13 @@ const RecommendFollowers = styled.div`
   border-bottom: 1px solid #e6ecf0;
 `;
 
-const NickLink = styled.div`
+const NickBox = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
 `;
 
-const Nick = styled(NavLink)`
+const Nick = styled(Link)`
   font-size: 14px;
   font-weight: bold;
   color: #14171a;
@@ -31,7 +31,7 @@ const Nick = styled(NavLink)`
   }
 `;
 
-const AtNick = styled(NavLink)`
+const AtNick = styled(Link)`
   font-size: 14px;
   color: #657786;
   text-decoration: none;
@@ -75,19 +75,19 @@ const FollowButton = styled.button`
   font-size: 14px;
 `;
 
-export default ({ nick, nickLink, avatar, deleteIcon }) => {
+export default ({ nick, to, avatar, deleteIcon }) => {
   return (
     <RecommendFollowers>
-      <NickLink>
-        <Nick exact to={nickLink}>
+      <NickBox>
+        <Nick exact to={to}>
           <Avatar src={avatar} />
           {nick}
         </Nick>
-        <AtNick exact to={nickLink}>
+        <AtNick exact to={to}>
           @{nick}
         </AtNick>
         <DeleteIcon src={deleteIcon} />
-      </NickLink>
+      </NickBox>
       <FollowButton>Follow</FollowButton>
     </RecommendFollowers>
   );

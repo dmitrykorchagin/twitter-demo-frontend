@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "./Button";
 import RecommendFollowers from "./RecommendFollowers";
 import SidebarHeading from "../SidebarHeading";
 import avatar1 from "../img/ava-follower1.jpg";
@@ -31,36 +30,45 @@ const WhoToFollowTitle = styled.h3`
   margin-right: 5px;
 `;
 
+const Button = styled.button`
+  color: #1da1f2;
+  font-size: 12px;
+  padding: 5px 5px 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+`;
+
 export default () => {
   return (
     <WhoToFollow>
       <WhoToFollowHeading>
         <WhoToFollowTitle>Who to follow</WhoToFollowTitle>
-        ·<Button textButton="Refresh" />
-        ·<Button textButton="View all" />
+        ·<Button>Refresh</Button>
+        ·<Button>View all</Button>
       </WhoToFollowHeading>
       <RecommendFollowers
         nick="AppleInsider"
-        nickLink="/appleinsider"
+        to="/appleinsider"
         avatar={avatar1}
         deleteIcon={deleteIcon}
       />
       <RecommendFollowers
         nick="Creode"
-        nickLink="/creode"
+        to="/creode"
         avatar={avatar2}
         deleteIcon={deleteIcon}
       />
       <RecommendFollowers
         nick="Epiphany Search"
-        nickLink="/epiphanysearch"
+        to="/epiphanysearch"
         avatar={avatar3}
         deleteIcon={deleteIcon}
       />
       <SidebarHeading
         icon={peopleIcon}
         title="Find people you know"
-        titleLink="/EveryInteract/find_you_follow"
+        to="/EveryInteract/find_you_follow"
       />
     </WhoToFollow>
   );

@@ -4,18 +4,20 @@ import { NavLink } from "react-router-dom";
 
 const MediaPhotos = styled.li``;
 
-const MediaPhotosLink = styled(NavLink)`
+const Link = styled(NavLink)`
   padding-right: 5px;
+  widht: 83px;
+  height: 83px;
 `;
 
-const MediaPhotosView = styled.img``;
+const PhotosView = styled.img``;
 
-export default ({ photos, photosLink }) => {
+export default ({ photos, to }) => {
   return (
     <MediaPhotos>
-      <MediaPhotosLink exact to={photosLink}>
-        <MediaPhotosView src={photos} />
-      </MediaPhotosLink>
+      <Link exact to={to}>
+        <PhotosView src={photos} />
+      </Link>
     </MediaPhotos>
   );
 };

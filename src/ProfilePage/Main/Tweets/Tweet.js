@@ -34,25 +34,25 @@ const Tweet = styled.div`
   margin-top: 5px;
 `;
 
-const TweetHeader = styled.div`
+const Header = styled.div`
   display: flex;
   align-items: center;
   position: relative;
 `;
 
-const TweetNick = styled.span`
+const Nick = styled.span`
   font-size: 15px;
   font-weight: bold;
   color: #14171a;
   margin-right: 3px;
 `;
 
-const TweetAtNick = TweetNick.extend`
+const AtNick = Nick.extend`
   font-weight: normal;
   color: #707e88;
 `;
 
-const TweetDate = TweetAtNick.extend``;
+const TweetDate = AtNick.extend``;
 
 const TweetAvatar = styled.img`
   width: 50px;
@@ -99,9 +99,9 @@ const ActionCount = styled.span`
 
 export default ({
   pinned,
-  tweetNick,
-  tweetAtNick,
-  tweetAvatar,
+  nick,
+  atNick,
+  avatar,
   date,
   text,
   img,
@@ -118,12 +118,12 @@ export default ({
         </PinnedTweet>
       )}
       <Tweet>
-        <TweetHeader>
-          <TweetNick>{tweetNick}</TweetNick>
-          <TweetAtNick>{tweetAtNick}</TweetAtNick>
+        <Header>
+          <Nick>{nick}</Nick>
+          <AtNick>{atNick}</AtNick>
           <TweetDate>• {date}</TweetDate>
-          <TweetAvatar src={tweetAvatar} />
-        </TweetHeader>
+          <TweetAvatar src={avatar} />
+        </Header>
         <TweetText>{text}</TweetText>
         {img && <TweetImg src={img} alt="post image" />}
       </Tweet>

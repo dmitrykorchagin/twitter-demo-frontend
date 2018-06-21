@@ -15,7 +15,7 @@ const Followers = styled.div`
   flex-direction: column;
 `;
 
-const FollowersList = styled.ul`
+const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -31,16 +31,16 @@ export default () => {
       <SidebarHeading
         icon={followersIcon}
         title="6 Followers you know"
-        titleLink="/EveryInteract/followers_you_follow"
+        to="/EveryInteract/followers_you_follow"
       />
-      <FollowersList>
-        <Follower link="/follower1" avatar={avatar1} alt="follower avatar" />
-        <Follower link="/follower2" avatar={avatar2} alt="follower avatar" />
-        <Follower link="/follower3" avatar={avatar3} alt="follower avatar" />
-        <Follower link="/follower4" avatar={avatar4} alt="follower avatar" />
-        <Follower link="/follower5" avatar={avatar5} alt="follower avatar" />
-        <Follower link="/follower6" avatar={avatar6} alt="follower avatar" />
-      </FollowersList>
+      <List>
+        <Follower to="/follower1" avatar={avatar1} alt="follower avatar" />
+        <Follower to="/follower2" avatar={avatar2} alt="follower avatar" />
+        <Follower to="/follower3" avatar={avatar3} alt="follower avatar" />
+        <Follower to="/follower4" avatar={avatar4} alt="follower avatar" />
+        <Follower to="/follower5" avatar={avatar5} alt="follower avatar" />
+        <Follower to="/follower6" avatar={avatar6} alt="follower avatar" />
+      </List>
     </Followers>
   );
 };

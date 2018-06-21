@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-const NavigationList = styled.ul`
+const List = styled.ul`
   display: flex;
   padding: 0;
 
@@ -18,7 +18,7 @@ const Navigation = styled.li`
   padding-left: 15px;
 `;
 
-const NavigationLink = styled(NavLink)`
+const Link = styled(NavLink)`
   display: flex;
   font-size: 18px;
   text-decoration: none;
@@ -32,29 +32,28 @@ const NavigationLink = styled(NavLink)`
     color: #14171a;
   }
   &:hover {
-    text-decoration: ${props =>
-      props.activeClassName === "selected" ? "none" : "underline"};
+    text-decoration: underline;
   }
 `;
 
 export default () => {
   return (
-    <NavigationList>
+    <List>
       <Navigation>
-        <NavigationLink exact to="/EveryInteract" activeClassName="active">
+        <Link exact to="/EveryInteract">
           Tweets
-        </NavigationLink>
+        </Link>
       </Navigation>
       <Navigation>
-        <NavigationLink exact to="/EveryInteract/with_replies">
+        <Link exact to="/EveryInteract/with_replies">
           Tweets & replies
-        </NavigationLink>
+        </Link>
       </Navigation>
       <Navigation>
-        <NavigationLink exact to="/EveryInteract/media">
+        <Link exact to="/EveryInteract/media">
           Media
-        </NavigationLink>
+        </Link>
       </Navigation>
-    </NavigationList>
+    </List>
   );
 };

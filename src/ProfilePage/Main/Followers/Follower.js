@@ -4,21 +4,21 @@ import { NavLink } from "react-router-dom";
 
 const Follower = styled.li``;
 
-const FollowerLink = styled(NavLink)`
+const Link = styled(NavLink)`
   padding-right: 5px;
 `;
 
-const FollowerAvatar = styled.img`
+const Avatar = styled.img`
   width: 48px;
   height: 48px;
 `;
 
-export default ({ link, avatar, alt }) => {
+export default ({ to, avatar, alt }) => {
   return (
     <Follower>
-      <FollowerLink exact to={link}>
-        <FollowerAvatar src={avatar} alt={alt} />
-      </FollowerLink>
+      <Link exact to={to}>
+        <Avatar src={avatar} alt={alt} />
+      </Link>
     </Follower>
   );
 };

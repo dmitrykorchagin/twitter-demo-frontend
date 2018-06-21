@@ -18,11 +18,11 @@ const SideTitleLink = styled(NavLink)`
   line-height: 16px;
 `;
 
-export default ({ icon, title, titleLink }) => {
+export default ({ icon, title, to }) => {
   return (
     <SideHeading>
       <SideIcon src={icon} />
-      <SideTitleLink exact to={titleLink}>
+      <SideTitleLink exact to={to}>
         {title}
       </SideTitleLink>
     </SideHeading>

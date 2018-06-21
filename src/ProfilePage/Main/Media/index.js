@@ -19,13 +19,14 @@ const MediaBox = styled.div`
   display: flex;
 `;
 
-const MediaList = styled.ul`
+const List = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   list-style: none;
   padding: 0;
-  margin: 8px 0 30px;
+  margin: 0;
+  margin-top: 8px;
 `;
 
 export default () => {
@@ -34,17 +35,17 @@ export default () => {
       <SidebarHeading
         icon={mediaIcon}
         title="522 Photos and Video"
-        titleLink="/media"
+        to="/media"
       />
       <MediaBox>
-        <MediaList>
-          <MediaPhotos photos={photos1} photosLink="/photo1" />
-          <MediaPhotos photos={photos2} photosLink="/photo2" />
-          <MediaPhotos photos={photos3} photosLink="/photo3" />
-          <MediaPhotos photos={photos4} photosLink="/photo4" />
-          <MediaPhotos photos={photos5} photosLink="/photo5" />
-          <MediaPhotos photos={photos6} photosLink="/photo6" />
-        </MediaList>
+        <List>
+          <MediaPhotos photos={photos1} to="/photo1" />
+          <MediaPhotos photos={photos2} to="/photo2" />
+          <MediaPhotos photos={photos3} to="/photo3" />
+          <MediaPhotos photos={photos4} to="/photo4" />
+          <MediaPhotos photos={photos5} to="/photo5" />
+          <MediaPhotos photos={photos6} to="/photo6" />
+        </List>
       </MediaBox>
     </Media>
   );
