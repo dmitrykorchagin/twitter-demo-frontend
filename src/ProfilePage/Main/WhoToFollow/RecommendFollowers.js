@@ -40,6 +40,12 @@ const AtNick = styled(Link)`
   text-overflow: ellipsis;
 `;
 
+const Tick = styled.img`
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+`;
+
 const Avatar = styled.img`
   border-radius: 50%;
   width: 48px;
@@ -75,13 +81,14 @@ const FollowButton = styled.button`
   font-size: 14px;
 `;
 
-export default ({ nick, to, avatar, deleteIcon }) => {
+export default ({ nick, to, avatar, deleteIcon, tick }) => {
   return (
     <RecommendFollowers>
       <NickBox>
         <Nick exact to={to}>
           <Avatar src={avatar} />
           {nick}
+          {tick && <Tick src={tick} />}
         </Nick>
         <AtNick exact to={to}>
           @{nick}

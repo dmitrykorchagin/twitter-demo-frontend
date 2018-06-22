@@ -7,6 +7,7 @@ import avatar2 from "../img/ava-follower2.jpg";
 import avatar3 from "../img/ava-follower3.jpg";
 import deleteIcon from "../img/delete.svg";
 import peopleIcon from "../img/people.svg";
+import tickIcon from "../img/tick.svg";
 
 const WhoToFollow = styled.div`
   display: flex;
@@ -16,13 +17,13 @@ const WhoToFollow = styled.div`
   margin-top: 10px;
 `;
 
-const WhoToFollowHeading = styled.div`
+const Heading = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
 `;
 
-const WhoToFollowTitle = styled.h3`
+const Title = styled.h3`
   font-size: 18px;
   font-weight: bold;
   color: #14171a;
@@ -42,11 +43,11 @@ const Button = styled.button`
 export default () => {
   return (
     <WhoToFollow>
-      <WhoToFollowHeading>
-        <WhoToFollowTitle>Who to follow</WhoToFollowTitle>
+      <Heading>
+        <Title>Who to follow</Title>
         ·<Button>Refresh</Button>
         ·<Button>View all</Button>
-      </WhoToFollowHeading>
+      </Heading>
       <RecommendFollowers
         nick="AppleInsider"
         to="/appleinsider"
@@ -56,6 +57,7 @@ export default () => {
       <RecommendFollowers
         nick="Creode"
         to="/creode"
+        tick={tickIcon}
         avatar={avatar2}
         deleteIcon={deleteIcon}
       />

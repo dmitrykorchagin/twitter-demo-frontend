@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SideHeading = styled.div`
   display: flex;
@@ -8,9 +8,9 @@ const SideHeading = styled.div`
   margin-top: 20px;
 `;
 
-const SideIcon = styled.img``;
+const Icon = styled.img``;
 
-const SideTitleLink = styled(NavLink)`
+const SideTitleLink = styled(Link)`
   color: #1da1f2;
   text-decoration: none;
   margin-left: 8px;
@@ -18,10 +18,10 @@ const SideTitleLink = styled(NavLink)`
   line-height: 16px;
 `;
 
-export default ({ icon, title, to }) => {
+export default ({ icon, to, title }) => {
   return (
     <SideHeading>
-      <SideIcon src={icon} />
+      <Icon src={icon} />
       <SideTitleLink exact to={to}>
         {title}
       </SideTitleLink>

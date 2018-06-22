@@ -6,6 +6,8 @@ import Media from "./Media/";
 import Tweets from "./Tweets/";
 import WhoToFollow from "./WhoToFollow/";
 import { Grid, Row, Col } from "react-flexbox-grid";
+import Trends from "./Trends";
+import Footer from "./Footer";
 
 const Main = styled.main`
   background: #e6ecf0;
@@ -26,6 +28,8 @@ export default () => {
           </Col>
           <Col lg={3}>
             <WhoToFollow />
+            <Trends />
+            <Footer />
           </Col>
         </Row>
       </Grid>

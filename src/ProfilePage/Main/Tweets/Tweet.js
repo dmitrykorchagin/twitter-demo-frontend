@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { format, formatDistance, formatRelative, subDays } from "date-fns";
 import Action from "./Action";
 import commentsIcon from "../img/comments.svg";
 import retweetIcon from "../img/retweet.svg";
@@ -86,7 +87,7 @@ export default ({
   nick,
   atNick,
   avatar,
-  date,
+  time,
   text,
   img,
   comments,
@@ -105,7 +106,7 @@ export default ({
         <Header>
           <Nick>{nick}</Nick>
           <AtNick>{atNick}</AtNick>
-          <Time>• {date}</Time>
+          <Time>• {format(time, "DD MMM")}</Time>
           <Avatar src={avatar} />
         </Header>
         <Text>{text}</Text>
