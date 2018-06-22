@@ -2,9 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import RecommendFollowers from "./RecommendFollowers";
 import SidebarHeading from "../SidebarHeading";
-import avatar1 from "../img/ava-follower1.jpg";
-import avatar2 from "../img/ava-follower2.jpg";
-import avatar3 from "../img/ava-follower3.jpg";
 import deleteIcon from "../img/delete.svg";
 import peopleIcon from "../img/people.svg";
 import tickIcon from "../img/tick.svg";
@@ -51,20 +48,20 @@ export default () => {
       <RecommendFollowers
         nick="AppleInsider"
         to="/appleinsider"
-        avatar={avatar1}
+        avatar={`${process.env.PUBLIC_URL}/img/ava-follower1.jpg`}
         deleteIcon={deleteIcon}
       />
       <RecommendFollowers
         nick="Creode"
         to="/creode"
         tick={tickIcon}
-        avatar={avatar2}
+        avatar={`${process.env.PUBLIC_URL}/img/ava-follower2.jpg`}
         deleteIcon={deleteIcon}
       />
       <RecommendFollowers
         nick="Epiphany Search"
         to="/epiphanysearch"
-        avatar={avatar3}
+        avatar={`${process.env.PUBLIC_URL}/img/ava-follower3.jpg`}
         deleteIcon={deleteIcon}
       />
       <SidebarHeading

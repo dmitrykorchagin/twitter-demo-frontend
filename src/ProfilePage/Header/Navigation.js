@@ -2,10 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { Grid } from "react-flexbox-grid";
-import profileimage from "./img/profileimage.jpg";
 import logo from "./img/twitter-logo.svg";
 import search from "./img/search.svg";
-import avatar from "./img/avatar-menu.jpg";
 import homeIcon from "./img/home.svg";
 import momentsIcon from "./img/moments.svg";
 import notificationsIcon from "./img/notifications.svg";
@@ -177,13 +175,15 @@ export default () => {
               </SearchBtn>
             </HeaderForm>
             <AvatarLink>
-              <Avatar src={avatar} />
+              <Avatar src={`${process.env.PUBLIC_URL}/img/avatar-menu.jpg`} />
             </AvatarLink>
             <TweetBtn>Tweet</TweetBtn>
           </NavRight>
         </Header>
       </Grid>
-      <ProfileBackground src={profileimage} />
+      <ProfileBackground
+        src={`${process.env.PUBLIC_URL}/img/profileimage.jpg`}
+      />
     </HeaderWrapper>
   );
 };

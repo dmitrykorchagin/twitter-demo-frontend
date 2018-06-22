@@ -43,7 +43,9 @@ const AtNick = styled(Link)`
 const Tick = styled.img`
   width: 16px;
   height: 16px;
-  margin-left: 5px;
+  align-items: center;
+  display: flex;
+  margin-right: 5px;
 `;
 
 const Avatar = styled.img`
@@ -88,8 +90,8 @@ export default ({ nick, to, avatar, deleteIcon, tick }) => {
         <Nick exact to={to}>
           <Avatar src={avatar} />
           {nick}
-          {tick && <Tick src={tick} />}
         </Nick>
+        {tick && <Tick src={tick} />}
         <AtNick exact to={to}>
           @{nick}
         </AtNick>

@@ -3,12 +3,6 @@ import styled from "styled-components";
 import SidebarHeading from "../SidebarHeading";
 import MediaPhotos from "./MediaPhotos";
 import mediaIcon from "../img/media.svg";
-import photos1 from "../img/photos1.jpg";
-import photos2 from "../img/photos2.jpg";
-import photos3 from "../img/photos3.jpg";
-import photos4 from "../img/photos4.jpg";
-import photos5 from "../img/photos5.jpg";
-import photos6 from "../img/photos6.jpg";
 
 const Media = styled.div`
   display: flex;
@@ -39,12 +33,30 @@ export default () => {
       />
       <MediaBox>
         <List>
-          <MediaPhotos photos={photos1} to="/photo1" />
-          <MediaPhotos photos={photos2} to="/photo2" />
-          <MediaPhotos photos={photos3} to="/photo3" />
-          <MediaPhotos photos={photos4} to="/photo4" />
-          <MediaPhotos photos={photos5} to="/photo5" />
-          <MediaPhotos photos={photos6} to="/photo6" />
+          <MediaPhotos
+            photos={`${process.env.PUBLIC_URL}/img/photos1.jpg`}
+            to="/photo1"
+          />
+          <MediaPhotos
+            photos={`${process.env.PUBLIC_URL}/img/photos2.jpg`}
+            to="/photo2"
+          />
+          <MediaPhotos
+            photos={`${process.env.PUBLIC_URL}/img/photos3.jpg`}
+            to="/photo3"
+          />
+          <MediaPhotos
+            photos={`${process.env.PUBLIC_URL}/img/photos4.jpg`}
+            to="/photo4"
+          />
+          <MediaPhotos
+            photos={`${process.env.PUBLIC_URL}/img/photos5.jpg`}
+            to="/photo5"
+          />
+          <MediaPhotos
+            photos={`${process.env.PUBLIC_URL}/img/photos6.jpg`}
+            to="/photo6"
+          />
         </List>
       </MediaBox>
     </Media>
