@@ -50,36 +50,16 @@ export default () => {
       </Heading>
       <List>
         <Trend topic="#BringYourDogToWorkDay" to="/linktrend" />
-        <Trend
-          topic="#FridayFeeling"
-          to="/linktrend"
-          description="12.1K Tweets"
-        />
-        <Trend
-          topic="#FridayFeeling"
-          to="/linktrend"
-          description="12.1K Tweets"
-        />
+        <Trend topic="#FridayFeeling" to="/linktrend" count={12100} />
+        <Trend topic="#FridayFeeling" to="/linktrend" count={12100} />
         <Trend
           topic="#BrexitAnniversary"
           to="/linktrend"
           description="It’s one year since the UK voted to leave the European Union"
         />
-        <Trend
-          topic="HMS Queen Elizabeth"
-          to="/linktrend"
-          description="1,036 Tweets"
-        />
-        <Trend
-          topic="Joe Budden"
-          to="/linktrendjoe"
-          description="1,036 Tweets"
-        />
-        <Trend
-          topic="Trident"
-          to="/linktrendhmndewe"
-          description="6,136 Tweets"
-        />
+        <Trend topic="HMS Queen Elizabeth" to="/linktrend" count={1036} />
+        <Trend topic="Joe Budden" to="/linktrendjoe" count={1036} />
+        <Trend topic="Trident" to="/linktrendhmndewe" count={6136} />
       </List>
     </Trends>
   );

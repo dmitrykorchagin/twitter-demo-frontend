@@ -64,11 +64,9 @@ export default () => {
         avatar={`${process.env.PUBLIC_URL}/img/ava-follower3.jpg`}
         deleteIcon={deleteIcon}
       />
-      <SidebarHeading
-        icon={peopleIcon}
-        title="Find people you know"
-        to="/EveryInteract/find_you_follow"
-      />
+      <SidebarHeading icon={peopleIcon} to="/EveryInteract/find_you_follow">
+        Find people you know
+      </SidebarHeading>
     </WhoToFollow>
   );
 };

@@ -26,11 +26,9 @@ const List = styled.ul`
 export default () => {
   return (
     <Media>
-      <SidebarHeading
-        icon={mediaIcon}
-        title="522 Photos and Video"
-        to="/media"
-      />
+      <SidebarHeading icon={mediaIcon} to="/media">
+        522 Photos and Video
+      </SidebarHeading>
       <MediaBox>
         <List>
           <MediaPhotos

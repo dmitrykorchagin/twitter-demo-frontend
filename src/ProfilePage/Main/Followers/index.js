@@ -24,9 +24,10 @@ export default () => {
     <Followers>
       <SidebarHeading
         icon={followersIcon}
-        title="6 Followers you know"
         to="/EveryInteract/followers_you_follow"
-      />
+      >
+        6 Followers you know
+      </SidebarHeading>
       <List>
         <Follower
           to="/follower1"

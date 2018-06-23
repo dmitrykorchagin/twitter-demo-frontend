@@ -6,11 +6,11 @@ const MediaPhotos = styled.li``;
 
 const Link = styled(NavLink)`
   padding-right: 5px;
-  widht: 83px;
-  height: 83px;
 `;
 
-const PhotosView = styled.img``;
+const PhotosView = styled.img`
+  width: 83px;
+`;
 
 export default ({ photos, to }) => {
   return (

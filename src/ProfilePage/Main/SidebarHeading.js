@@ -10,7 +10,7 @@ const SideHeading = styled.div`
 
 const Icon = styled.img``;
 
-const SideTitleLink = styled(Link)`
+const TitleLink = styled(Link)`
   color: #1da1f2;
   text-decoration: none;
   margin-left: 8px;
@@ -18,13 +18,13 @@ const SideTitleLink = styled(Link)`
   line-height: 16px;
 `;
 
-export default ({ icon, to, title }) => {
+export default ({ icon, to, children }) => {
   return (
     <SideHeading>
       <Icon src={icon} />
-      <SideTitleLink exact to={to}>
-        {title}
-      </SideTitleLink>
+      <TitleLink exact to={to}>
+        {children}
+      </TitleLink>
     </SideHeading>
   );
 };

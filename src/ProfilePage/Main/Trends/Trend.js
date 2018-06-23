@@ -26,13 +26,16 @@ const Description = styled.span`
   flex-wrap: wrap;
 `;
 
-export default ({ topic, to, description }) => {
+const Count = Description.extend``;
+
+export default ({ topic, to, description, count }) => {
   return (
     <Trend>
       <TrendLink exact to={to}>
         {topic}
       </TrendLink>
       {description && <Description>{description}</Description>}
+      {count && <Count>{count} Tweets</Count>}
     </Trend>
   );
 };
