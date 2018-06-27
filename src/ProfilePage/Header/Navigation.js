@@ -132,13 +132,6 @@ const TweetBtn = styled.button`
   outline: none;
 `;
 
-const ProfileBackground = styled.img`
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-  display: block;
-`;
-
 export default () => (
   <HeaderWrapper>
     <Grid>
@@ -146,19 +139,19 @@ export default () => (
         <Navigation>
           <Home exact to="/">
             <Icon src={homeIcon} />
-              Home
+            Home
           </Home>
-          <Moments exact to="/EveryInteract/moments">
+          <Moments exact to="/moments">
             <Icon src={momentsIcon} />
-              Moments
+            Moments
           </Moments>
-          <Notifications exact to="/EveryInteract/notification">
+          <Notifications exact to="/notifications">
             <Icon src={notificationsIcon} />
-              Notification
+            Notification
           </Notifications>
-          <Messages exact to="/EveryInteract/likes">
+          <Messages exact to="/messages">
             <Icon src={messagesIcon} />
-              Messages
+            Messages
           </Messages>
         </Navigation>
         <LogoImg src={logo} alt="logo" />
@@ -178,6 +171,5 @@ Tweet
         </NavRight>
       </Header>
     </Grid>
-    <ProfileBackground src={`${process.env.PUBLIC_URL}/img/profileimage.jpg`} />
   </HeaderWrapper>
 );
