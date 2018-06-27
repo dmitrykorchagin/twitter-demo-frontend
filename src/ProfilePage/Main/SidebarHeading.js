@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const SideHeading = styled.div`
   display: flex;
@@ -18,13 +18,11 @@ const TitleLink = styled(Link)`
   line-height: 16px;
 `;
 
-export default ({ icon, to, children }) => {
-  return (
-    <SideHeading>
-      <Icon src={icon} />
-      <TitleLink exact to={to}>
-        {children}
-      </TitleLink>
-    </SideHeading>
-  );
-};
+export default ({ icon, to, children }) => (
+  <SideHeading>
+    <Icon src={icon} />
+    <TitleLink exact to={to}>
+      {children}
+    </TitleLink>
+  </SideHeading>
+);

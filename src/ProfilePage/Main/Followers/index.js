@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import Follower from "./Follower";
-import SidebarHeading from "../SidebarHeading";
-import followersIcon from "../img/followers.svg";
+import React from 'react';
+import styled from 'styled-components';
+import Follower from './Follower';
+import SidebarHeading from '../SidebarHeading';
+import followersIcon from '../img/followers.svg';
 
 const Followers = styled.div`
   display: flex;
@@ -19,47 +19,40 @@ const List = styled.ul`
   margin-top: 8px;
 `;
 
-export default () => {
-  return (
-    <Followers>
-      <SidebarHeading
-        icon={followersIcon}
-        to="/EveryInteract/followers_you_follow"
-      >
-        6 Followers you know
-      </SidebarHeading>
-      <List>
-        <Follower
-          to="/follower1"
-          avatar={`${process.env.PUBLIC_URL}/img/avatar-1.jpg`}
-          alt="follower avatar"
-        />
-        <Follower
-          to="/follower2"
-          avatar={`${process.env.PUBLIC_URL}/img/avatar-2.jpg`}
-          alt="follower avatar"
-        />
-        <Follower
-          to="/follower3"
-          avatar={`${process.env.PUBLIC_URL}/img/avatar-3.jpg`}
-          alt="follower avatar"
-        />
-        <Follower
-          to="/follower4"
-          avatar={`${process.env.PUBLIC_URL}/img/avatar-4.jpg`}
-          alt="follower avatar"
-        />
-        <Follower
-          to="/follower5"
-          avatar={`${process.env.PUBLIC_URL}/img/avatar-5.jpg`}
-          alt="follower avatar"
-        />
-        <Follower
-          to="/follower6"
-          avatar={`${process.env.PUBLIC_URL}/img/avatar-6.jpg`}
-          alt="follower avatar"
-        />
-      </List>
-    </Followers>
-  );
-};
+const followers = [
+  {
+    to: '/follower1',
+    avatar: `${process.env.PUBLIC_URL}/img/avatar-1.jpg`,
+  },
+  {
+    to: '/follower2',
+    avatar: `${process.env.PUBLIC_URL}/img/avatar-2.jpg`,
+  },
+  {
+    to: '/follower3',
+    avatar: `${process.env.PUBLIC_URL}/img/avatar-3.jpg`,
+  },
+  {
+    to: '/follower4',
+    avatar: `${process.env.PUBLIC_URL}/img/avatar-4.jpg`,
+  },
+  {
+    to: '/follower5',
+    avatar: `${process.env.PUBLIC_URL}/img/avatar-5.jpg`,
+  },
+  {
+    to: '/follower6',
+    avatar: `${process.env.PUBLIC_URL}/img/avatar-6.jpg`,
+  },
+];
+
+export default () => (
+  <Followers>
+    <SidebarHeading icon={followersIcon} to="/EveryInteract/followers_you_follow">
+      6 Followers you know
+    </SidebarHeading>
+    <List>
+      {followers.map(follower => <Follower to={follower.to} avatar={follower.avatar} />)}
+    </List>
+  </Followers>
+);

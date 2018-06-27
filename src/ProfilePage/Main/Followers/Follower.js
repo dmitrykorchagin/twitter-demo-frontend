@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const Follower = styled.li``;
 
@@ -13,12 +13,10 @@ const Avatar = styled.img`
   height: 48px;
 `;
 
-export default ({ to, avatar, alt }) => {
-  return (
-    <Follower>
-      <Link exact to={to}>
-        <Avatar src={avatar} alt={alt} />
-      </Link>
-    </Follower>
-  );
-};
+export default ({ to, avatar, alt }) => (
+  <Follower>
+    <Link exact to={to}>
+      <Avatar src={avatar} alt={alt} />
+    </Link>
+  </Follower>
+);

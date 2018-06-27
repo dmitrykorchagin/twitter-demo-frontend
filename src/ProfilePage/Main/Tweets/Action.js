@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Action = styled.li`
   display: flex;
@@ -18,11 +18,11 @@ const Count = styled.span`
   margin-left: 10px;
 `;
 
-export default ({ icon, count, alt }) => {
-  return (
-    <Action>
-      <Icon src={icon} alt="alt" />
-      <Count>{count}</Count>
-    </Action>
-  );
-};
+export default ({ icon, count, alt }) => (
+  <Action>
+    <Icon src={icon} alt={alt} />
+    <Count>
+      {count}
+    </Count>
+  </Action>
+);

@@ -1,6 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import deleteIcon from '../img/delete.svg';
 
 const RecommendFollowers = styled.div`
   display: flex;
@@ -83,21 +84,24 @@ const FollowButton = styled.button`
   font-size: 14px;
 `;
 
-export default ({ nick, to, avatar, deleteIcon, tick }) => {
-  return (
-    <RecommendFollowers>
-      <NickBox>
-        <Nick exact to={to}>
-          <Avatar src={avatar} />
-          {nick}
-        </Nick>
-        {tick && <Tick src={tick} />}
-        <AtNick exact to={to}>
-          @{nick}
-        </AtNick>
-        <DeleteIcon src={deleteIcon} />
-      </NickBox>
-      <FollowButton>Follow</FollowButton>
-    </RecommendFollowers>
-  );
-};
+export default ({
+  nick, to, avatar, tick,
+}) => (
+  <RecommendFollowers>
+    <NickBox>
+      <Nick exact to={to}>
+        <Avatar src={avatar} />
+        {nick}
+      </Nick>
+      {tick && <Tick src={tick} />}
+      <AtNick exact to={to}>
+        @
+        {nick}
+      </AtNick>
+      <DeleteIcon src={deleteIcon} />
+    </NickBox>
+    <FollowButton>
+Follow
+    </FollowButton>
+  </RecommendFollowers>
+);

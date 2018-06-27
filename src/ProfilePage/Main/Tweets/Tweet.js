@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "styled-components";
-import { format, formatDistance, formatRelative, subDays } from "date-fns";
-import Action from "./Action";
-import commentsIcon from "../img/comments.svg";
-import retweetIcon from "../img/retweet.svg";
-import lovesIcon from "../img/loves.svg";
-import envelopeIcon from "../img/envelope.svg";
-import pinnedIcon from "../img/pinned.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { format } from 'date-fns';
+import Action from './Action';
+import commentsIcon from '../img/comments.svg';
+import retweetIcon from '../img/retweet.svg';
+import lovesIcon from '../img/loves.svg';
+import envelopeIcon from '../img/envelope.svg';
+import pinnedIcon from '../img/pinned.svg';
 
 const PinnedTweet = styled.span`
   font-size: 12px;
@@ -93,31 +93,39 @@ export default ({
   comments,
   retweets,
   loves,
-  envelope
-}) => {
-  return (
-    <TweetWrap>
-      {pinned && (
-        <PinnedTweet>
-          <PinnedIcon src={pinnedIcon} /> Pinned Post
-        </PinnedTweet>
-      )}
-      <Tweet>
-        <Header>
-          <Nick>{nick}</Nick>
-          <AtNick>{atNick}</AtNick>
-          <Time>• {format(time, "DD MMM")}</Time>
-          <Avatar src={avatar} />
-        </Header>
-        <Text>{text}</Text>
-        {img && <TweetImg src={img} alt="post image" />}
-      </Tweet>
-      <ActionList>
-        <Action icon={commentsIcon} count={comments > 0 && comments} />
-        <Action icon={retweetIcon} count={retweets > 0 && retweets} />
-        <Action icon={lovesIcon} count={loves > 0 && loves} />
-        <Action icon={envelopeIcon} count={envelope > 0 && envelope} />
-      </ActionList>
-    </TweetWrap>
-  );
-};
+  envelope,
+}) => (
+  <TweetWrap>
+    {pinned && (
+      <PinnedTweet>
+        <PinnedIcon src={pinnedIcon} />
+        Pinned Post
+      </PinnedTweet>
+    )}
+    <Tweet>
+      <Header>
+        <Nick>
+          {nick}
+        </Nick>
+        <AtNick>
+          {atNick}
+        </AtNick>
+        <Time>
+          •
+          {format(time, 'DD MMM')}
+        </Time>
+        <Avatar src={avatar} />
+      </Header>
+      <Text>
+        {text}
+      </Text>
+      {img && <TweetImg src={img} alt="post image" />}
+    </Tweet>
+    <ActionList>
+      <Action icon={commentsIcon} count={comments > 0 && comments} alt="comments icon" />
+      <Action icon={retweetIcon} count={retweets > 0 && retweets} alt="retweet icon" />
+      <Action icon={lovesIcon} count={loves > 0 && loves} alt="loves icon" />
+      <Action icon={envelopeIcon} count={envelope > 0 && envelope} alt="envelope icon" />
+    </ActionList>
+  </TweetWrap>
+);

@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import tickIcon from "./img/tick.svg";
-import locationIcon from "./img/location.svg";
-import linkIcon from "./img/link.svg";
-import joinedIcon from "./img/joined.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import tickIcon from './img/tick.svg';
+import locationIcon from './img/location.svg';
+import linkIcon from './img/link.svg';
+import joinedIcon from './img/joined.svg';
 
 const Description = styled.section`
   margin-top: 41px;
@@ -113,36 +113,48 @@ const Message = Tweet.extend`
   padding: 12px 34px;
 `;
 
-export default () => {
-  return (
-    <Description>
-      <NickLink to="/EveryInteract">Every Interaction</NickLink>
-      <Tick src={tickIcon} alt="Verified Profile" />
+export default () => (
+  <Description>
+    <NickLink to="/EveryInteract">
+Every Interaction
+    </NickLink>
+    <Tick src={tickIcon} alt="Verified Profile" />
 
-      <FollowLink to="/EveryInteract">@EveryInteract</FollowLink>
-      <Follow>Follows you</Follow>
+    <FollowLink to="/EveryInteract">
+@EveryInteract
+    </FollowLink>
+    <Follow>
+Follows you
+    </Follow>
 
-      <ProfileBio>
-        UX Design studio focussed problem solving creativity. Design to us is
-        how can we make things *work* amazing.
-      </ProfileBio>
-      <Location>
-        <LocationIcon src={locationIcon} alt="location icon" />
-        <LocationCity>London, UK</LocationCity>
-      </Location>
-      <WebSiteLink>
-        <LinkIcon src={linkIcon} alt="link icon" />
-        <LinkAdress href="everyinteraction.com">
-          everyinteraction.com
-        </LinkAdress>
-      </WebSiteLink>
-      <Joined>
-        <JoinedIcon src={joinedIcon} alt="calendar" />
-        <JoinedDate>Joined May 2008</JoinedDate>
-      </Joined>
+    <ProfileBio>
+        UX Design studio focussed problem solving creativity. Design to us is how can we make things
+        *work* amazing.
+    </ProfileBio>
+    <Location>
+      <LocationIcon src={locationIcon} alt="location icon" />
+      <LocationCity>
+London, UK
+      </LocationCity>
+    </Location>
+    <WebSiteLink>
+      <LinkIcon src={linkIcon} alt="link icon" />
+      <LinkAdress href="everyinteraction.com">
+everyinteraction.com
+      </LinkAdress>
+    </WebSiteLink>
+    <Joined>
+      <JoinedIcon src={joinedIcon} alt="calendar" />
+      <JoinedDate>
+Joined May 2008
+      </JoinedDate>
+    </Joined>
 
-      <Tweet>Tweet to</Tweet>
-      <Message>Message</Message>
-    </Description>
-  );
-};
+    <Tweet>
+Tweet to
+    </Tweet>
+    <Message>
+Message
+    </Message>
+  </Description>
+);

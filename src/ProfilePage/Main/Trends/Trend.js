@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Trend = styled.li`
   display: flex;
@@ -28,14 +28,23 @@ const Description = styled.span`
 
 const Count = Description.extend``;
 
-export default ({ topic, to, description, count }) => {
-  return (
-    <Trend>
-      <TrendLink exact to={to}>
-        {topic}
-      </TrendLink>
-      {description && <Description>{description}</Description>}
-      {count && <Count>{count} Tweets</Count>}
-    </Trend>
-  );
-};
+export default ({
+  topic, to, description, count,
+}) => (
+  <Trend>
+    <TrendLink exact to={to}>
+      {topic}
+    </TrendLink>
+    {description && (
+    <Description>
+      {description}
+    </Description>
+    )}
+    {count && (
+      <Count>
+        {count}
+        Tweets
+      </Count>
+    )}
+  </Trend>
+);

@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import Trend from "./Trend";
+import React from 'react';
+import styled from 'styled-components';
+import Trend from './Trend';
 
 const Trends = styled.div`
   display: flex;
@@ -41,26 +41,58 @@ const List = styled.ul`
   margin: 0;
 `;
 
-export default () => {
-  return (
-    <Trends>
-      <Heading>
-        <Title>United Kingdom Trends</Title>
-        ·<Button>Change</Button>
-      </Heading>
-      <List>
-        <Trend topic="#BringYourDogToWorkDay" to="/linktrend" />
-        <Trend topic="#FridayFeeling" to="/linktrend" count={12100} />
-        <Trend topic="#FridayFeeling" to="/linktrend" count={12100} />
+const trends = [
+  {
+    topic: '#BringYourDogToWorkDay',
+    to: '/linktrend',
+  },
+  {
+    topic: '#FridayFeeling"',
+    to: '/linktrend',
+    count: 12100,
+  },
+  {
+    topic: '#BrexitAnniversary',
+    to: '/linktrend',
+    description: 'It’s one year since the UK voted to leave the European Union',
+  },
+  {
+    topic: 'HMS Queen Elizabeth',
+    to: '/linktrend',
+    count: 1036,
+  },
+  {
+    topic: 'Joe Budden',
+    to: '/linktrend',
+    count: 1036,
+  },
+  {
+    topic: 'Trident',
+    to: '/linktrend',
+    count: 12100,
+  },
+];
+
+export default () => (
+  <Trends>
+    <Heading>
+      <Title>
+United Kingdom Trends
+      </Title>
+      ·
+      <Button>
+Change
+      </Button>
+    </Heading>
+    <List>
+      {trends.map(trend => (
         <Trend
-          topic="#BrexitAnniversary"
-          to="/linktrend"
-          description="It’s one year since the UK voted to leave the European Union"
+          topic={trend.topic}
+          to={trend.to}
+          description={trend.description}
+          count={trend.count}
         />
-        <Trend topic="HMS Queen Elizabeth" to="/linktrend" count={1036} />
-        <Trend topic="Joe Budden" to="/linktrendjoe" count={1036} />
-        <Trend topic="Trident" to="/linktrendhmndewe" count={6136} />
-      </List>
-    </Trends>
-  );
-};
+      ))}
+    </List>
+  </Trends>
+);

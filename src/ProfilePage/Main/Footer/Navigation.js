@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { getYear } from "date-fns";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { getYear } from 'date-fns';
 
 const List = styled.ul`
   display: flex;
@@ -37,7 +37,11 @@ const NavLink = styled(Link)`
 export default () => (
   <List>
     <Navigation>
-      <Year>© {getYear(new Date())} Twitter</Year>
+      <Year>
+        ©
+        {getYear(new Date())}
+        Twitter
+      </Year>
     </Navigation>
     <Navigation>
       <NavLink exact to="/about">

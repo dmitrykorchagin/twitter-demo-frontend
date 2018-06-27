@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import { Grid, Row, Col } from "react-flexbox-grid";
-import avatar from "./img/Avatar.png";
-import more from "./img/more.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import avatar from './img/Avatar.png';
+import more from './img/more.svg';
 
 const Statistics = styled.div`
   width: 100%;
@@ -92,50 +92,70 @@ const Dropmenu = styled.button`
   background: url(${more}) no-repeat center;
 `;
 
-export default () => {
-  return (
-    <Statistics>
-      <Grid>
-        <Row>
-          <Col lg={3}>
-            <ProfileInfo>
-              <ProfileAvatar>
-                <AvatarImage />
-              </ProfileAvatar>
-            </ProfileInfo>
-          </Col>
-          <Col lg={6}>
-            <ProfileNav>
-              <ProfileNavLink exact to="/EveryInteract/tweets">
-                <Text>Tweets</Text>
-                <Amount>8,058</Amount>
-              </ProfileNavLink>
-              <ProfileNavLink exact to="/EveryInteract/following">
-                <Text>Following</Text>
-                <Amount>721</Amount>
-              </ProfileNavLink>
-              <ProfileNavLink exact to="/EveryInteract/followers">
-                <Text>Followers</Text>
-                <Amount>1,815</Amount>
-              </ProfileNavLink>
-              <ProfileNavLink exact to="/EveryInteract/likes">
-                <Text>Likes</Text>
-                <Amount>460</Amount>
-              </ProfileNavLink>
-              <ProfileNavLink exact to="/EveryInteract/list">
-                <Text>List</Text>
-                <Amount>2</Amount>
-              </ProfileNavLink>
-            </ProfileNav>
-          </Col>
-          <Col lg={3}>
-            <Rightnav>
-              <FollowBtn>Follow</FollowBtn>
-              <Dropmenu />
-            </Rightnav>
-          </Col>
-        </Row>
-      </Grid>
-    </Statistics>
-  );
-};
+export default () => (
+  <Statistics>
+    <Grid>
+      <Row>
+        <Col lg={3}>
+          <ProfileInfo>
+            <ProfileAvatar>
+              <AvatarImage />
+            </ProfileAvatar>
+          </ProfileInfo>
+        </Col>
+        <Col lg={6}>
+          <ProfileNav>
+            <ProfileNavLink exact to="/EveryInteract/tweets">
+              <Text>
+Tweets
+              </Text>
+              <Amount>
+8,058
+              </Amount>
+            </ProfileNavLink>
+            <ProfileNavLink exact to="/EveryInteract/following">
+              <Text>
+Following
+              </Text>
+              <Amount>
+721
+              </Amount>
+            </ProfileNavLink>
+            <ProfileNavLink exact to="/EveryInteract/followers">
+              <Text>
+Followers
+              </Text>
+              <Amount>
+1,815
+              </Amount>
+            </ProfileNavLink>
+            <ProfileNavLink exact to="/EveryInteract/likes">
+              <Text>
+Likes
+              </Text>
+              <Amount>
+460
+              </Amount>
+            </ProfileNavLink>
+            <ProfileNavLink exact to="/EveryInteract/list">
+              <Text>
+List
+              </Text>
+              <Amount>
+2
+              </Amount>
+            </ProfileNavLink>
+          </ProfileNav>
+        </Col>
+        <Col lg={3}>
+          <Rightnav>
+            <FollowBtn>
+Follow
+            </FollowBtn>
+            <Dropmenu />
+          </Rightnav>
+        </Col>
+      </Row>
+    </Grid>
+  </Statistics>
+);

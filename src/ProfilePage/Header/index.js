@@ -1,12 +1,10 @@
-import React from "react";
-import Navigation from "./Navigation";
-import Statistics from "./Statistics";
+import React from 'react';
+import Navigation from './Navigation';
+import Statistics from './Statistics';
 
-export default () => {
-  return (
-    <div>
-      <Navigation />
-      <Statistics />
-    </div>
-  );
-};
+export default () => (
+  <div>
+    <Navigation />
+    <Statistics />
+  </div>
+);

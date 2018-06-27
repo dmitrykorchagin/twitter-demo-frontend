@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import { Grid } from "react-flexbox-grid";
-import logo from "./img/twitter-logo.svg";
-import search from "./img/search.svg";
-import homeIcon from "./img/home.svg";
-import momentsIcon from "./img/moments.svg";
-import notificationsIcon from "./img/notifications.svg";
-import messagesIcon from "./img/messages.svg";
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import { Grid } from 'react-flexbox-grid';
+import logo from './img/twitter-logo.svg';
+import search from './img/search.svg';
+import homeIcon from './img/home.svg';
+import momentsIcon from './img/moments.svg';
+import notificationsIcon from './img/notifications.svg';
+import messagesIcon from './img/messages.svg';
 
 const HeaderWrapper = styled.div`
   width: 100%;
@@ -139,51 +139,45 @@ const ProfileBackground = styled.img`
   display: block;
 `;
 
-export default () => {
-  return (
-    <HeaderWrapper>
-      <Grid>
-        <Header>
-          <Navigation>
-            <Home exact to="/">
-              <Icon src={homeIcon} />
+export default () => (
+  <HeaderWrapper>
+    <Grid>
+      <Header>
+        <Navigation>
+          <Home exact to="/">
+            <Icon src={homeIcon} />
               Home
-            </Home>
-            <Moments exact to="/EveryInteract/moments">
-              <Icon src={momentsIcon} />
+          </Home>
+          <Moments exact to="/EveryInteract/moments">
+            <Icon src={momentsIcon} />
               Moments
-            </Moments>
-            <Notifications exact to="/EveryInteract/notification">
-              <Icon src={notificationsIcon} />
+          </Moments>
+          <Notifications exact to="/EveryInteract/notification">
+            <Icon src={notificationsIcon} />
               Notification
-            </Notifications>
-            <Messages exact to="/EveryInteract/likes">
-              <Icon src={messagesIcon} />
+          </Notifications>
+          <Messages exact to="/EveryInteract/likes">
+            <Icon src={messagesIcon} />
               Messages
-            </Messages>
-          </Navigation>
-          <LogoImg src={logo} alt="logo" />
-          <NavRight>
-            <HeaderForm>
-              <FormInput
-                type="text"
-                id="search-twitter"
-                placeholder="Search Twitter"
-              />
-              <SearchBtn>
-                <img src={search} alt="search button" />
-              </SearchBtn>
-            </HeaderForm>
-            <AvatarLink>
-              <Avatar src={`${process.env.PUBLIC_URL}/img/avatar-menu.jpg`} />
-            </AvatarLink>
-            <TweetBtn>Tweet</TweetBtn>
-          </NavRight>
-        </Header>
-      </Grid>
-      <ProfileBackground
-        src={`${process.env.PUBLIC_URL}/img/profileimage.jpg`}
-      />
-    </HeaderWrapper>
-  );
-};
+          </Messages>
+        </Navigation>
+        <LogoImg src={logo} alt="logo" />
+        <NavRight>
+          <HeaderForm>
+            <FormInput type="text" id="search-twitter" placeholder="Search Twitter" />
+            <SearchBtn>
+              <img src={search} alt="search button" />
+            </SearchBtn>
+          </HeaderForm>
+          <AvatarLink>
+            <Avatar src={`${process.env.PUBLIC_URL}/img/avatar-menu.jpg`} />
+          </AvatarLink>
+          <TweetBtn>
+Tweet
+          </TweetBtn>
+        </NavRight>
+      </Header>
+    </Grid>
+    <ProfileBackground src={`${process.env.PUBLIC_URL}/img/profileimage.jpg`} />
+  </HeaderWrapper>
+);

@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const List = styled.ul`
   display: flex;
@@ -36,24 +36,22 @@ const Link = styled(NavLink)`
   }
 `;
 
-export default () => {
-  return (
-    <List>
-      <Navigation>
-        <Link exact to="/EveryInteract">
+export default () => (
+  <List>
+    <Navigation>
+      <Link exact to="/EveryInteract">
           Tweets
-        </Link>
-      </Navigation>
-      <Navigation>
-        <Link exact to="/EveryInteract/with_replies">
+      </Link>
+    </Navigation>
+    <Navigation>
+      <Link exact to="/EveryInteract/with_replies">
           Tweets & replies
-        </Link>
-      </Navigation>
-      <Navigation>
-        <Link exact to="/EveryInteract/media">
+      </Link>
+    </Navigation>
+    <Navigation>
+      <Link exact to="/EveryInteract/media">
           Media
-        </Link>
-      </Navigation>
-    </List>
-  );
-};
+      </Link>
+    </Navigation>
+  </List>
+);

@@ -1,10 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import RecommendFollowers from "./RecommendFollowers";
-import SidebarHeading from "../SidebarHeading";
-import deleteIcon from "../img/delete.svg";
-import peopleIcon from "../img/people.svg";
-import tickIcon from "../img/tick.svg";
+import React from 'react';
+import styled from 'styled-components';
+import RecommendFollowers from './RecommendFollowers';
+import SidebarHeading from '../SidebarHeading';
+import peopleIcon from '../img/people.svg';
+import tickIcon from '../img/tick.svg';
 
 const WhoToFollow = styled.div`
   display: flex;
@@ -37,36 +36,50 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export default () => {
-  return (
-    <WhoToFollow>
-      <Heading>
-        <Title>Who to follow</Title>
-        ·<Button>Refresh</Button>
-        ·<Button>View all</Button>
-      </Heading>
+const followers = [
+  {
+    nick: 'AppleInsider',
+    to: '/appleinsider',
+    avatar: `${process.env.PUBLIC_URL}/img/ava-follower1.jpg`,
+  },
+  {
+    nick: 'Creode',
+    to: '/creode',
+    tick: tickIcon,
+    avatar: `${process.env.PUBLIC_URL}/img/ava-follower2.jpg`,
+  },
+  {
+    nick: 'Epiphany Search',
+    to: '/epiphanysearch',
+    avatar: `${process.env.PUBLIC_URL}/img/ava-follower3.jpg`,
+  },
+];
+
+export default () => (
+  <WhoToFollow>
+    <Heading>
+      <Title>
+Who to follow
+      </Title>
+      ·
+      <Button>
+Refresh
+      </Button>
+      ·
+      <Button>
+View all
+      </Button>
+    </Heading>
+    {followers.map(follower => (
       <RecommendFollowers
-        nick="AppleInsider"
-        to="/appleinsider"
-        avatar={`${process.env.PUBLIC_URL}/img/ava-follower1.jpg`}
-        deleteIcon={deleteIcon}
+        nick={follower.nick}
+        to={follower.to}
+        tick={follower.tick}
+        avatar={follower.avatar}
       />
-      <RecommendFollowers
-        nick="Creode"
-        to="/creode"
-        tick={tickIcon}
-        avatar={`${process.env.PUBLIC_URL}/img/ava-follower2.jpg`}
-        deleteIcon={deleteIcon}
-      />
-      <RecommendFollowers
-        nick="Epiphany Search"
-        to="/epiphanysearch"
-        avatar={`${process.env.PUBLIC_URL}/img/ava-follower3.jpg`}
-        deleteIcon={deleteIcon}
-      />
-      <SidebarHeading icon={peopleIcon} to="/EveryInteract/find_you_follow">
-        Find people you know
-      </SidebarHeading>
-    </WhoToFollow>
-  );
-};
+    ))}
+    <SidebarHeading icon={peopleIcon} to="/EveryInteract/find_you_follow">
+      Find people you know
+    </SidebarHeading>
+  </WhoToFollow>
+);
