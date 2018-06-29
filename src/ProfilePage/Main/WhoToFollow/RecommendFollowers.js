@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import deleteIcon from '../img/delete.svg';
+import tickIcon from '../img/tick.svg';
 
 const RecommendFollowers = styled.div`
   display: flex;
@@ -85,18 +86,18 @@ const FollowButton = styled.button`
 `;
 
 export default ({
-  nick, to, avatar, tick,
+  avatar, name, official, id,
 }) => (
   <RecommendFollowers>
     <NickBox>
-      <Nick exact to={to}>
+      <Nick exact to={`/${id}`}>
         <Avatar src={avatar} />
-        {nick}
+        {name}
       </Nick>
-      {tick && <Tick src={tick} />}
-      <AtNick exact to={to}>
+      {official && <Tick src={tickIcon} />}
+      <AtNick exact to={`/${id}`}>
         @
-        {nick}
+        {name}
       </AtNick>
       <DeleteIcon src={deleteIcon} />
     </NickBox>

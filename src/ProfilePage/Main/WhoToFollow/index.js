@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import RecommendFollowers from './RecommendFollowers';
 import SidebarHeading from '../SidebarHeading';
 import peopleIcon from '../img/people.svg';
-import tickIcon from '../img/tick.svg';
 
 const WhoToFollow = styled.div`
   display: flex;
@@ -36,26 +35,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const followers = [
-  {
-    nick: 'AppleInsider',
-    to: '/appleinsider',
-    avatar: `${process.env.PUBLIC_URL}/img/ava-follower1.jpg`,
-  },
-  {
-    nick: 'Creode',
-    to: '/creode',
-    tick: tickIcon,
-    avatar: `${process.env.PUBLIC_URL}/img/ava-follower2.jpg`,
-  },
-  {
-    nick: 'Epiphany Search',
-    to: '/epiphanysearch',
-    avatar: `${process.env.PUBLIC_URL}/img/ava-follower3.jpg`,
-  },
-];
-
-export default () => (
+export default ({ data }) => (
   <WhoToFollow>
     <Heading>
       <Title>
@@ -70,15 +50,15 @@ Refresh
 View all
       </Button>
     </Heading>
-    {followers.map(follower => (
+    {data.map(user => (
       <RecommendFollowers
-        nick={follower.nick}
-        to={follower.to}
-        tick={follower.tick}
-        avatar={follower.avatar}
+        id={user.id}
+        name={user.name}
+        official={user.official}
+        avatar={user.avatar}
       />
     ))}
-    <SidebarHeading icon={peopleIcon} to="/EveryInteract/find_you_follow">
+    <SidebarHeading icon={peopleIcon} to="/find_you_follow">
       Find people you know
     </SidebarHeading>
   </WhoToFollow>

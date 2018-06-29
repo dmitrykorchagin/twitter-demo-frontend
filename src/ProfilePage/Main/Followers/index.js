@@ -46,9 +46,9 @@ const followers = [
   },
 ];
 
-export default () => (
+export default ({ uid }) => (
   <Followers>
-    <SidebarHeading icon={followersIcon} to="/EveryInteract/followers_you_follow">
+    <SidebarHeading icon={followersIcon} to={`/${uid}/followers_you_follow`}>
       6 Followers you know
     </SidebarHeading>
     <List>

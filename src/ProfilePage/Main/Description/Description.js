@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import tickIcon from './img/tick.svg';
-import locationIcon from './img/location.svg';
-import linkIcon from './img/link.svg';
-import joinedIcon from './img/joined.svg';
+import tickIcon from '../img/tick.svg';
+import locationIcon from '../img/location.svg';
+import linkIcon from '../img/link.svg';
+import joinedIcon from '../img/joined.svg';
 
 const Description = styled.section`
   margin-top: 41px;
@@ -46,7 +46,7 @@ const Follow = styled.span`
   color: #697787;
 `;
 
-const ProfileBio = styled.div`
+const About = styled.div`
   margin-top: 10px;
   font-size: 14px;
   line-height: 20px;
@@ -113,40 +113,44 @@ const Message = Tweet.extend`
   padding: 12px 34px;
 `;
 
-export default () => (
+export default ({
+  id, name, official, followed, about, location, link, joined,
+}) => (
   <Description>
-    <NickLink to="/EveryInteract">
-Every Interaction
+    <NickLink to={`/${id}`}>
+      {name}
     </NickLink>
-    <Tick src={tickIcon} alt="Verified Profile" />
+    {official && <Tick src={tickIcon} alt="Verified Profile" />}
 
     <FollowLink to="/EveryInteract">
-@EveryInteract
+      @
+      {id}
     </FollowLink>
+    {followed && (
     <Follow>
 Follows you
     </Follow>
+    )}
 
-    <ProfileBio>
-        UX Design studio focussed problem solving creativity. Design to us is how can we make things
-        *work* amazing.
-    </ProfileBio>
+    <About>
+      {about}
+    </About>
     <Location>
       <LocationIcon src={locationIcon} alt="location icon" />
       <LocationCity>
-London, UK
+        {location}
       </LocationCity>
     </Location>
     <WebSiteLink>
       <LinkIcon src={linkIcon} alt="link icon" />
-      <LinkAdress href="everyinteraction.com">
-everyinteraction.com
+      <LinkAdress href={link}>
+        {link}
       </LinkAdress>
     </WebSiteLink>
     <Joined>
       <JoinedIcon src={joinedIcon} alt="calendar" />
       <JoinedDate>
-Joined May 2008
+        {joined}
       </JoinedDate>
     </Joined>
 
