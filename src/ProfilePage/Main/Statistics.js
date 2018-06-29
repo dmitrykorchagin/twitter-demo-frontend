@@ -92,7 +92,7 @@ const Dropmenu = styled.button`
   background: url(${more}) no-repeat center;
 `;
 
-export default ({ uid }) => (
+export default ({ user }) => (
   <Statistics>
     <Grid>
       <Row>
@@ -105,7 +105,7 @@ export default ({ uid }) => (
         </Col>
         <Col lg={6}>
           <ProfileNav>
-            <ProfileNavLink exact to={`/${uid}`}>
+            <ProfileNavLink exact to={`/${user}`}>
               <Text>
 Tweets
               </Text>
@@ -113,7 +113,7 @@ Tweets
 8,058
               </Amount>
             </ProfileNavLink>
-            <ProfileNavLink exact to={`/${uid}/following`}>
+            <ProfileNavLink exact to={`/${user}/following`}>
               <Text>
 Following
               </Text>
@@ -121,7 +121,7 @@ Following
 721
               </Amount>
             </ProfileNavLink>
-            <ProfileNavLink exact to={`/${uid}/followers`}>
+            <ProfileNavLink exact to={`/${user}/followers`}>
               <Text>
 Followers
               </Text>
@@ -129,7 +129,7 @@ Followers
 1,815
               </Amount>
             </ProfileNavLink>
-            <ProfileNavLink exact to={`/${uid}/likes`}>
+            <ProfileNavLink exact to={`/${user}/likes`}>
               <Text>
 Likes
               </Text>
@@ -137,7 +137,7 @@ Likes
 460
               </Amount>
             </ProfileNavLink>
-            <ProfileNavLink exact to={`/${uid}/lists`}>
+            <ProfileNavLink exact to={`/${user}/lists`}>
               <Text>
 List
               </Text>
