@@ -28,6 +28,11 @@ const TweetWrap = styled.div`
   border-top: 1px solid #e6ecf0;
   background: #fff;
   padding: 5px 10px 15px 71px;
+
+  &:hover {
+    background: #F5F8FA;
+    cursor: pointer;
+  }
 `;
 
 const Tweet = styled.div`

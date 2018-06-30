@@ -11,9 +11,13 @@ import Tweets from './Tweets';
 import WhoToFollow from './WhoToFollow';
 import Trends from './Trends';
 import Footer from './Footer';
+
 import users from '../data/users';
 import suggestedUsers from '../data/suggestedUsers';
 import media from '../data/media';
+import tweets from '../data/tweets';
+import followers from '../data/followers';
+import trends from '../data/trends';
 
 const Main = styled.main`
   background: #e6ecf0;
@@ -59,11 +63,11 @@ export default ({ match }) => {
                 link={uinfo.link}
                 joined={uinfo.joined}
               />
-              <Followers />
+              <Followers data={followers} />
               <Media data={media} />
             </Col>
             <Col lg={6}>
-              <Route exact path={`/${user}`} render={Tweets} />
+              <Route exact path={`/${user}`} render={() => <Tweets user={user} data={tweets} />} />
               <Route exact path={`/${user}/following`} render={Temporary} />
               <Route exact path={`/${user}/followers`} render={Temporary} />
               <Route exact path={`/${user}/likes`} render={Temporary} />
@@ -71,7 +75,7 @@ export default ({ match }) => {
             </Col>
             <Col lg={3}>
               <WhoToFollow data={suggestedUsers} />
-              <Trends />
+              <Trends data={trends} />
               <Footer />
             </Col>
           </Row>

@@ -3,8 +3,8 @@ import {
   BrowserRouter, Route, Redirect, Switch,
 } from 'react-router-dom';
 import Helmet from 'react-helmet';
-import Main from './ProfilePage/Main';
-import Header from './ProfilePage/Header/Navigation';
+import Main from './Main';
+import Header from './Header';
 
 const Temporary = ({ location }) => (
   <React.Fragment>
