@@ -78,21 +78,21 @@ const tweets = [
   },
 ];
 
-export default ({ uid }) => (
+export default ({ user }) => (
   <React.Fragment>
     <List>
       <Navigation>
-        <Link exact to={`/${uid}`}>
+        <Link exact to={`/${user}`}>
           Tweets
         </Link>
       </Navigation>
       <Navigation>
-        <Link exact to={`/${uid}/with_replies`}>
+        <Link exact to={`/${user}/with_replies`}>
           Tweets & replies
         </Link>
       </Navigation>
       <Navigation>
-        <Link exact to={`/${uid}/media`}>
+        <Link exact to={`/${user}/media`}>
           Media
         </Link>
       </Navigation>

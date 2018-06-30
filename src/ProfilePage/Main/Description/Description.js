@@ -113,16 +113,37 @@ const Message = Tweet.extend`
   padding: 12px 34px;
 `;
 
+const ProfileInfo = styled.div`
+  min-width: 265px;
+  position: relative;
+`;
+
+const ProfileAvatar = styled.div``;
+
+const AvatarImage = styled.img`
+  position: absolute;
+  border-radius: 50%;
+  bottom: 10px;
+  left: 0;
+  height: 210px;
+  width: 210px;
+`;
+
 export default ({
-  id, name, official, followed, about, location, link, joined,
+  id, name, official, followed, about, location, link, joined, avatar,
 }) => (
   <Description>
+    <ProfileInfo>
+      <ProfileAvatar>
+        <AvatarImage src={avatar} />
+      </ProfileAvatar>
+    </ProfileInfo>
     <NickLink to={`/${id}`}>
       {name}
     </NickLink>
     {official && <Tick src={tickIcon} alt="Verified Profile" />}
 
-    <FollowLink to="/EveryInteract">
+    <FollowLink to={`/${id}`}>
       @
       {id}
     </FollowLink>
@@ -136,13 +157,13 @@ Follows you
       {about}
     </About>
     <Location>
-      <LocationIcon src={locationIcon} alt="location icon" />
+      {location && <LocationIcon src={locationIcon} alt="location icon" />}
       <LocationCity>
         {location}
       </LocationCity>
     </Location>
     <WebSiteLink>
-      <LinkIcon src={linkIcon} alt="link icon" />
+      {link && <LinkIcon src={linkIcon} alt="link icon" />}
       <LinkAdress href={link}>
         {link}
       </LinkAdress>

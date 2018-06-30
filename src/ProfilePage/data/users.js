@@ -2,7 +2,7 @@ export default [
   {
     id: 'EveryInteract',
     name: 'Every Interaction',
-    avatar: `${process.env.PUBLIC_URL}/img/ava-follower1.jpg`,
+    avatar: `${process.env.PUBLIC_URL}/img/avatar.png`,
     background: `${process.env.PUBLIC_URL}/img/profileimage.jpg`,
     official: true,
     followed: true,
@@ -16,7 +16,7 @@ export default [
     id: 'fifacom',
     name: 'FIFAcom',
     avatar: `${process.env.PUBLIC_URL}/img/ava-follower1.jpg`,
-    background: `${process.env.PUBLIC_URL}/img/profileimage.jpg`,
+    background: `${process.env.PUBLIC_URL}/img/fifa-bg.jpg`,
     official: true,
     followed: false,
     about:
@@ -27,7 +27,7 @@ export default [
     id: 'creode',
     name: 'Creode',
     avatar: `${process.env.PUBLIC_URL}/img/ava-follower2.jpg`,
-    background: `${process.env.PUBLIC_URL}/img/profileimage.jpg`,
+    background: `${process.env.PUBLIC_URL}/img/creode-bg.jpg`,
     official: false,
     followed: false,
     about:
@@ -38,8 +38,8 @@ export default [
   {
     id: 'numiko',
     name: 'numiko',
-    avatar: `${process.env.PUBLIC_URL}/img/ava-follower1.jpg`,
-    background: `${process.env.PUBLIC_URL}/img/profileimage.jpg`,
+    avatar: `${process.env.PUBLIC_URL}/img/ava-follower3.jpg`,
+    background: `${process.env.PUBLIC_URL}/img/numiko-bg.jpg`,
     official: false,
     followed: false,
     about:

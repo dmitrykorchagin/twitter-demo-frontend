@@ -23,43 +23,41 @@ const List = styled.ul`
   margin-top: 8px;
 `;
 
-const photos = [
-  {
-    photos: `${process.env.PUBLIC_URL}/img/photos1.jpg`,
-    to: '/photos1',
-  },
-  {
-    photos: `${process.env.PUBLIC_URL}/img/photos2.jpg`,
-    to: '/photos2',
-  },
-  {
-    photos: `${process.env.PUBLIC_URL}/img/photos3.jpg`,
-    to: '/photos3',
-  },
-  {
-    photos: `${process.env.PUBLIC_URL}/img/photos4.jpg`,
-    to: '/photos4',
-  },
-  {
-    photos: `${process.env.PUBLIC_URL}/img/photos5.jpg`,
-    to: '/photos5',
-  },
-  {
-    photos: `${process.env.PUBLIC_URL}/img/photos6.jpg`,
-    to: '/photos6',
-  },
-];
+// const photos = [
+//   {
+//     photos: `${process.env.PUBLIC_URL}/img/photos1.jpg`,
+//     to: '/photos1',
+//   },
+//   {
+//     photos: `${process.env.PUBLIC_URL}/img/photos2.jpg`,
+//     to: '/photos2',
+//   },
+//   {
+//     photos: `${process.env.PUBLIC_URL}/img/photos3.jpg`,
+//     to: '/photos3',
+//   },
+//   {
+//     photos: `${process.env.PUBLIC_URL}/img/photos4.jpg`,
+//     to: '/photos4',
+//   },
+//   {
+//     photos: `${process.env.PUBLIC_URL}/img/photos5.jpg`,
+//     to: '/photos5',
+//   },
+//   {
+//     photos: `${process.env.PUBLIC_URL}/img/photos6.jpg`,
+//     to: '/photos6',
+//   },
+// ];
 
-export default () => (
+export default ({ data }) => (
   <Media>
     <SidebarHeading icon={mediaIcon} to="/media">
       522 Photos and Video
     </SidebarHeading>
     <MediaBox>
       <List>
-        {photos.map(photo => (
-          <MediaPhotos photos={photo.photos} to={photo.to} />
-        ))}
+        {data.map(photo => <MediaPhotos photos={photo.photos} to={photo.to} />)}
       </List>
     </MediaBox>
   </Media>

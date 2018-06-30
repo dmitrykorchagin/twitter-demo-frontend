@@ -13,6 +13,7 @@ import Trends from './Trends';
 import Footer from './Footer';
 import users from '../data/users';
 import suggestedUsers from '../data/suggestedUsers';
+import media from '../data/media';
 
 const Main = styled.main`
   background: #e6ecf0;
@@ -41,13 +42,14 @@ export default ({ match }) => {
           {`${uinfo.name}`}
         </title>
       </Helmet>
-      <ProfileBackground src={`${process.env.PUBLIC_URL}/img/profileimage.jpg`} />
+      <ProfileBackground src={uinfo.background} />
       <Statistics user={user} />
       <Main>
         <Grid>
           <Row>
             <Col lg={3}>
               <Description
+                avatar={uinfo.avatar}
                 id={uinfo.id}
                 name={uinfo.name}
                 official={uinfo.official}
@@ -58,7 +60,7 @@ export default ({ match }) => {
                 joined={uinfo.joined}
               />
               <Followers />
-              <Media />
+              <Media data={media} />
             </Col>
             <Col lg={6}>
               <Route exact path={`/${user}`} render={Tweets} />

@@ -2,31 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import avatar from './img/Avatar.png';
+// import avatar from './img/Avatar.png';
 import more from './img/more.svg';
 
 const Statistics = styled.div`
   width: 100%;
   box-shadow: 0px 2px 2px #b0b8be;
-`;
-
-const ProfileInfo = styled.div`
-  min-width: 265px;
-  position: relative;
-`;
-
-const ProfileAvatar = styled.div``;
-
-const AvatarImage = styled.a`
-  position: absolute;
-  border-radius: 50%;
-  top: -120px;
-  left: 0;
-  height: 210px;
-  width: 210px;
-  background-image: url(${avatar});
-  background-position: center;
-  background-size: 100%;
 `;
 
 const ProfileNav = styled.div`
@@ -96,13 +77,7 @@ export default ({ user }) => (
   <Statistics>
     <Grid>
       <Row>
-        <Col lg={3}>
-          <ProfileInfo>
-            <ProfileAvatar>
-              <AvatarImage />
-            </ProfileAvatar>
-          </ProfileInfo>
-        </Col>
+        <Col lg={3} />
         <Col lg={6}>
           <ProfileNav>
             <ProfileNavLink exact to={`/${user}`}>
