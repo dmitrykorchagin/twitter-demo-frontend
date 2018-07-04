@@ -5,9 +5,9 @@ import { NavLink } from 'react-router-dom';
 const List = styled.ul`
   display: flex;
   padding: 0;
-
   background: #fff;
   margin: 0;
+  margin-top: 10px;
   list-style: none;
 `;
 

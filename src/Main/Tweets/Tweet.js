@@ -30,12 +30,12 @@ const TweetWrap = styled.div`
   padding: 5px 10px 15px 71px;
 
   &:hover {
-    background: #F5F8FA;
+    background: #f5f8fa;
     cursor: pointer;
   }
 `;
 
-const Tweet = styled.div`
+const StTweet = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 5px;
@@ -73,11 +73,45 @@ const Avatar = styled.img`
 const Text = styled.p`
   font-size: 25px;
   font-weight: 300;
+  margin: 5px 0;
 `;
 
 const TweetImg = styled.img`
   width: 100%;
   height: auto;
+`;
+
+const Card = styled.div`
+  display: flex;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  max-height: 225px;
+  margin-top: 5px;
+`;
+
+const CardImage = styled.img`
+  width: 126px;
+  height: 126px;
+`;
+
+const CardText = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+`;
+
+const CardTitle = styled.p`
+  font-size: 14px;
+  font-weight: bold;
+`;
+
+const CardDescription = styled.p`
+  font-size: 12px;
+`;
+
+const CardLink = styled.span`
+  color: #707e88;
+  font-size: 12px;
 `;
 
 const ActionList = styled.ul`
@@ -87,50 +121,90 @@ const ActionList = styled.ul`
   margin: 0;
 `;
 
-export default ({
-  pinned,
-  nick,
-  atNick,
-  avatar,
-  time,
-  text,
-  img,
-  comments,
-  retweets,
-  loves,
-  envelope,
-}) => (
-  <TweetWrap>
-    {pinned && (
-      <PinnedTweet>
-        <PinnedIcon src={pinnedIcon} />
-        Pinned Post
-      </PinnedTweet>
-    )}
-    <Tweet>
-      <Header>
-        <Nick>
-          {nick}
-        </Nick>
-        <AtNick>
-          {atNick}
-        </AtNick>
-        <Time>
-          •
-          {format(time, 'DD MMM')}
-        </Time>
-        <Avatar src={avatar} />
-      </Header>
-      <Text>
-        {text}
-      </Text>
-      {img && <TweetImg src={img} alt="post image" />}
-    </Tweet>
-    <ActionList>
-      <Action icon={commentsIcon} count={comments > 0 && comments} alt="comments icon" />
-      <Action icon={retweetIcon} count={retweets > 0 && retweets} alt="retweet icon" />
-      <Action icon={lovesIcon} count={loves > 0 && loves} alt="loves icon" />
-      <Action icon={envelopeIcon} count={envelope > 0 && envelope} alt="envelope icon" />
-    </ActionList>
-  </TweetWrap>
-);
+class Tweet extends React.Component {
+  state = {
+    card: [],
+  };
+
+  componentDidMount() {
+    const { id } = this.props;
+    fetch(
+      `https://twitter-demo.erodionov.ru/api/v1/statuses/${id}/card?access_token=${
+        process.env.REACT_APP_ACCESS_TOKEN
+      }
+      `,
+    )
+      .then(result => result.json())
+      .then(response => this.setState({ card: response }));
+  }
+
+  render() {
+    const { card } = this.state;
+    const {
+      id,
+      nick,
+      user,
+      avatar,
+      text,
+      time,
+      pinned,
+      img,
+      retweets,
+      loves,
+      comments,
+      envelope,
+    } = this.props;
+    return (
+      <TweetWrap key={id}>
+        {pinned && (
+          <PinnedTweet>
+            <PinnedIcon src={pinnedIcon} />
+            Pinned Post
+          </PinnedTweet>
+        )}
+        <StTweet>
+          <Header>
+            <Nick>
+              {nick}
+            </Nick>
+            <AtNick>
+              @
+              {user}
+            </AtNick>
+            <Time>
+              •
+              {format(time, 'DD MMM')}
+            </Time>
+            <Avatar src={avatar} />
+          </Header>
+          <Text dangerouslySetInnerHTML={{ __html: text }} />
+          {img.map(imgs => <TweetImg src={imgs.preview_url} alt="post image" />)}
+          {card.url && (
+            <Card key={id}>
+              {card.image && <CardImage src={card.image} />}
+              <CardText>
+                <CardTitle>
+                  {card.title}
+                </CardTitle>
+                <CardDescription>
+                  {card.description}
+                </CardDescription>
+                <CardLink>
+                  {card.url}
+                </CardLink>
+              </CardText>
+            </Card>
+          )}
+        </StTweet>
+        <ActionList>
+          <Action icon={commentsIcon} count={comments > 0 && comments} alt="comments icon" />
+          <Action icon={retweetIcon} count={retweets > 0 && retweets} alt="retweet icon" />
+          <Action icon={lovesIcon} count={loves > 0 && loves} alt="loves icon" />
+          <Action icon={envelopeIcon} count={envelope > 0 && envelope} alt="envelope icon" />
+        </ActionList>
+      </TweetWrap>
+    );
+  }
+}
+
+export default Tweet;
