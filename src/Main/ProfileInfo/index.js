@@ -53,6 +53,10 @@ const About = styled.div`
   line-height: 20px;
   color: #14171a;
   padding-right: 18px;
+
+  p {
+    margin: 0;
+  }
 `;
 
 const LocationIcon = styled.img`
@@ -166,7 +170,7 @@ Follows you
 
     <About dangerouslySetInnerHTML={{ __html: note }} />
     <Location>
-      <LocationIcon src={locationIcon} alt="location icon" />
+      {location && <LocationIcon src={locationIcon} alt="location icon" />}
       <LocationCity>
         {location}
       </LocationCity>

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { format } from 'date-fns';
 import Action from './Action';
+import Preview from './Preview';
 import commentsIcon from '../img/comments.svg';
 import retweetIcon from '../img/retweet.svg';
 import lovesIcon from '../img/loves.svg';
@@ -73,45 +74,23 @@ const Avatar = styled.img`
 const Text = styled.p`
   font-size: 25px;
   font-weight: 300;
-  margin: 5px 0;
+  margin: 5px 0 10px;
+
+  p {
+    margin: 0;
+    a {
+      color: #1da1f2;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 `;
 
 const TweetImg = styled.img`
   width: 100%;
   height: auto;
-`;
-
-const Card = styled.div`
-  display: flex;
-  border: 1px solid #e6e6e6;
-  border-radius: 5px;
-  max-height: 225px;
-  margin-top: 5px;
-`;
-
-const CardImage = styled.img`
-  width: 126px;
-  height: 126px;
-`;
-
-const CardText = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: 10px;
-`;
-
-const CardTitle = styled.p`
-  font-size: 14px;
-  font-weight: bold;
-`;
-
-const CardDescription = styled.p`
-  font-size: 12px;
-`;
-
-const CardLink = styled.span`
-  color: #707e88;
-  font-size: 12px;
 `;
 
 const ActionList = styled.ul`
@@ -123,7 +102,7 @@ const ActionList = styled.ul`
 
 class Tweet extends React.Component {
   state = {
-    card: [],
+    preview: [],
   };
 
   componentDidMount() {
@@ -135,11 +114,11 @@ class Tweet extends React.Component {
       `,
     )
       .then(result => result.json())
-      .then(response => this.setState({ card: response }));
+      .then(response => this.setState({ preview: response }));
   }
 
   render() {
-    const { card } = this.state;
+    const { preview } = this.state;
     const {
       id,
       nick,
@@ -179,21 +158,14 @@ class Tweet extends React.Component {
           </Header>
           <Text dangerouslySetInnerHTML={{ __html: text }} />
           {img.map(imgs => <TweetImg src={imgs.preview_url} alt="post image" />)}
-          {card.url && (
-            <Card key={id}>
-              {card.image && <CardImage src={card.image} />}
-              <CardText>
-                <CardTitle>
-                  {card.title}
-                </CardTitle>
-                <CardDescription>
-                  {card.description}
-                </CardDescription>
-                <CardLink>
-                  {card.url}
-                </CardLink>
-              </CardText>
-            </Card>
+          {preview.url && (
+            <Preview
+              id={preview.id}
+              image={preview.image}
+              title={preview.title}
+              description={preview.description}
+              url={preview.url}
+            />
           )}
         </StTweet>
         <ActionList>

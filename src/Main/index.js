@@ -4,8 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Helmet from 'react-helmet';
 import Statistics from './Statistics';
-import Description from './Description/Description';
 import TweetNavigation from './TweetNavigation';
+import ProfileInfo from './ProfileInfo';
 import Followers from './Followers';
 import Media from './Media';
 import Tweets from './Tweets';
@@ -38,9 +38,6 @@ const Temporary = ({ location }) => (
 class Profile extends React.Component {
   state = {
     userData: [],
-    location: 'MSK',
-    followed: true,
-    official: true,
   };
 
   componentDidMount() {
@@ -59,7 +56,7 @@ class Profile extends React.Component {
     const { match } = this.props;
     const { id } = match.params;
     const {
-      userData, location, followed, official,
+      userData, location,
     } = this.state;
     return (
       <React.Fragment>
@@ -74,7 +71,7 @@ class Profile extends React.Component {
           <Grid>
             <Row>
               <Col lg={3}>
-                <Description
+                <ProfileInfo
                   id={userData.id}
                   username={userData.username}
                   note={userData.note}
@@ -83,8 +80,8 @@ class Profile extends React.Component {
                   created={userData.created_at}
                   url={userData.url}
                   location={location}
-                  followed={followed}
-                  official={official}
+                  followed={false}
+                  official={false}
                 />
                 <Followers data={followers} />
                 <Media data={media} />
