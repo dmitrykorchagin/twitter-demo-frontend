@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Helmet from 'react-helmet';
 import Statistics from './Statistics';
-import Description from './Description/Description';
+import ProfileInfo from './ProfileInfo';
 import Followers from './Followers';
 import Media from './Media';
 import Tweets from './Tweets';
@@ -52,7 +52,7 @@ export default ({ match }) => {
         <Grid>
           <Row>
             <Col lg={3}>
-              <Description
+              <ProfileInfo
                 avatar={uinfo.avatar}
                 id={uinfo.id}
                 name={uinfo.name}
