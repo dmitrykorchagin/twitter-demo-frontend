@@ -66,7 +66,12 @@ class Profile extends React.Component {
           </title>
         </Helmet>
         <ProfileBackground src={userData.header_static} />
-        <Statistics user={userData.id} count={userData.statuses_count} />
+        <Statistics
+          user={userData.id}
+          count={userData.statuses_count}
+          following={userData.following_count}
+          followers={userData.followers_count}
+        />
         <Main>
           <Grid>
             <Row>
