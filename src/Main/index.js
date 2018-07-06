@@ -44,10 +44,10 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
+    const { match } = this.props;
+    const { id } = match.params;
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/1?access_token=${
-        process.env.REACT_APP_ACCESS_TOKEN
-      }`,
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
     )
       .then(result => result.json())
       .then(response => this.setState({
@@ -61,7 +61,6 @@ class Profile extends React.Component {
     const {
       userData, location, followed, official,
     } = this.state;
-
     return (
       <React.Fragment>
         <Helmet>

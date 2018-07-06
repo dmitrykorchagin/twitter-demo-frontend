@@ -12,8 +12,10 @@ class TweetFeed extends React.Component {
   };
 
   componentDidMount() {
+    const { user } = this.props;
+
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/1/statuses/?access_token=${
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${user}/statuses/?access_token=${
         process.env.REACT_APP_ACCESS_TOKEN
       }`,
     )
@@ -25,7 +27,6 @@ class TweetFeed extends React.Component {
 
   render() {
     const { tweetData, comments, envelope } = this.state;
-
     return (
       <Tweets>
         {tweetData.map(tweets => (
