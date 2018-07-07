@@ -7,26 +7,37 @@ const Tweets = styled.section``;
 class TweetFeed extends React.Component {
   state = {
     tweetData: [],
-    comments: '',
-    envelope: '',
+    error: false,
   };
 
   componentDidMount() {
-    const { user } = this.props;
+    const { userId } = this.props;
 
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${user}/statuses/?access_token=${
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/statuses/?access_token=${
         process.env.REACT_APP_ACCESS_TOKEN
       }`,
     )
       .then(result => result.json())
-      .then(response => this.setState({
-        tweetData: response,
-      }));
+      .then(
+        response => this.setState({
+          tweetData: response,
+        }),
+        error => this.setState({ error }),
+      );
   }
 
   render() {
-    const { tweetData, comments, envelope } = this.state;
+    const {
+      tweetData, comments, envelope, error,
+    } = this.state;
+    if (error) {
+      return (
+        <h2>
+Error
+        </h2>
+      );
+    }
     return (
       <Tweets>
         {tweetData.map(tweets => (

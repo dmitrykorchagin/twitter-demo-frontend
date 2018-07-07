@@ -15,7 +15,6 @@ import Footer from './Footer';
 
 import suggestedUsers from '../data/suggestedUsers';
 import media from '../data/media';
-import followers from '../data/followers';
 import trends from '../data/trends';
 
 const Main = styled.main`
@@ -38,26 +37,37 @@ const Temporary = ({ location }) => (
 class Profile extends React.Component {
   state = {
     userData: [],
+    error: false,
   };
 
   componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`,
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${id}?access_token=${
+        process.env.REACT_APP_ACCESS_TOKEN
+      }`,
     )
       .then(result => result.json())
-      .then(response => this.setState({
-        userData: response,
-      }));
+      .then(
+        response => this.setState({
+          userData: response,
+        }),
+        error => this.setState({ error }),
+      );
   }
 
   render() {
     const { match } = this.props;
     const { id } = match.params;
-    const {
-      userData, location,
-    } = this.state;
+    const { userData, location, error } = this.state;
+    if (error) {
+      return (
+        <h2>
+Errors
+        </h2>
+      );
+    }
     return (
       <React.Fragment>
         <Helmet>
@@ -88,7 +98,7 @@ class Profile extends React.Component {
                   followed={false}
                   official={false}
                 />
-                <Followers data={followers} />
+                <Followers userId={id} count={userData.followers_count} />
                 <Media data={media} />
               </Col>
               <Col lg={6}>
@@ -102,7 +112,7 @@ class Profile extends React.Component {
                         <Route
                           exact
                           path={`/${id}/(tweets)?`}
-                          render={() => <Tweets user={id} />}
+                          render={() => <Tweets userId={id} />}
                         />
                         <Route
                           exact
@@ -126,7 +136,6 @@ Media
                     </React.Fragment>
                   )}
                 />
-                <Route exact path={`/${id}`} render={() => <Tweets user={id} />} />
                 <Route exact path={`/${id}/following`} render={Temporary} />
                 <Route exact path={`/${id}/followers`} render={Temporary} />
                 <Route exact path={`/${id}/likes`} render={Temporary} />

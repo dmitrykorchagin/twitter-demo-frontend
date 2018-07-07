@@ -19,13 +19,50 @@ const List = styled.ul`
   margin-top: 8px;
 `;
 
-export default ({ data, user }) => (
-  <Followers>
-    <SidebarHeading icon={followersIcon} to={`/${user}/followers_you_follow`}>
-      6 Followers you know
-    </SidebarHeading>
-    <List>
-      {data.map(follower => <Follower to={follower.to} avatar={follower.avatar} />)}
-    </List>
-  </Followers>
-);
+class FollowersU extends React.Component {
+  state = {
+    followers: [],
+    error: false,
+  };
+
+  componentDidMount() {
+    const { userId } = this.props;
+    fetch(
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/followers/?access_token=${
+        process.env.REACT_APP_ACCESS_TOKEN
+      }`,
+    )
+      .then(result => result.json())
+      .then(
+        response => this.setState({
+          followers: response,
+        }),
+        error => this.setState({ error }),
+      );
+  }
+
+  render() {
+    const { userId, count } = this.props;
+    const { followers, error } = this.state;
+    if (error) {
+      return (
+        <h2>
+Errors
+        </h2>
+      );
+    }
+
+    return (
+      <Followers>
+        <SidebarHeading icon={followersIcon} to={`/${userId}/followers_you_follow`}>
+          {`${count} Followers you know`}
+        </SidebarHeading>
+        <List>
+          {followers.map(follower => <Follower to={`/${follower.id}`} avatar={follower.avatar} />)}
+        </List>
+      </Followers>
+    );
+  }
+}
+
+export default FollowersU;
