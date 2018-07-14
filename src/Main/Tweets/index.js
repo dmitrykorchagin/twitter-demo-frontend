@@ -5,10 +5,7 @@ import Tweet from './Tweet';
 const Tweets = styled.section``;
 
 class TweetFeed extends React.Component {
-  state = {
-    tweetData: [],
-    error: false,
-  };
+  state = { tweetData: [] };
 
   componentDidMount() {
     const { userId } = this.props;
@@ -19,25 +16,11 @@ class TweetFeed extends React.Component {
       }`,
     )
       .then(result => result.json())
-      .then(
-        response => this.setState({
-          tweetData: response,
-        }),
-        error => this.setState({ error }),
-      );
+      .then(response => this.setState({ tweetData: response }));
   }
 
   render() {
-    const {
-      tweetData, comments, envelope, error,
-    } = this.state;
-    if (error) {
-      return (
-        <h2>
-Error
-        </h2>
-      );
-    }
+    const { tweetData, comments, envelope } = this.state;
     return (
       <Tweets>
         {tweetData.map(tweets => (

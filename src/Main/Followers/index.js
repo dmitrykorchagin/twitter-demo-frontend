@@ -19,11 +19,8 @@ const List = styled.ul`
   margin-top: 8px;
 `;
 
-class FollowersU extends React.Component {
-  state = {
-    followers: [],
-    error: false,
-  };
+class FollowersList extends React.Component {
+  state = { followers: [] };
 
   componentDidMount() {
     const { userId } = this.props;
@@ -33,24 +30,12 @@ class FollowersU extends React.Component {
       }`,
     )
       .then(result => result.json())
-      .then(
-        response => this.setState({
-          followers: response,
-        }),
-        error => this.setState({ error }),
-      );
+      .then(response => this.setState({ followers: response }));
   }
 
   render() {
     const { userId, count } = this.props;
-    const { followers, error } = this.state;
-    if (error) {
-      return (
-        <h2>
-Errors
-        </h2>
-      );
-    }
+    const { followers } = this.state;
 
     return (
       <Followers>
@@ -65,4 +50,4 @@ Errors
   }
 }
 
-export default FollowersU;
+export default FollowersList;

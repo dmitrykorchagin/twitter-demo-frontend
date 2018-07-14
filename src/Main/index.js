@@ -35,10 +35,7 @@ const Temporary = ({ location }) => (
 );
 
 class Profile extends React.Component {
-  state = {
-    userData: [],
-    error: false,
-  };
+  state = { userData: [] };
 
   componentDidMount() {
     const { match } = this.props;
@@ -49,25 +46,13 @@ class Profile extends React.Component {
       }`,
     )
       .then(result => result.json())
-      .then(
-        response => this.setState({
-          userData: response,
-        }),
-        error => this.setState({ error }),
-      );
+      .then(response => this.setState({ userData: response }));
   }
 
   render() {
     const { match } = this.props;
     const { id } = match.params;
-    const { userData, location, error } = this.state;
-    if (error) {
-      return (
-        <h2>
-Errors
-        </h2>
-      );
-    }
+    const { userData, location } = this.state;
     return (
       <React.Fragment>
         <Helmet>
