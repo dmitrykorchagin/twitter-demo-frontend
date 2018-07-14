@@ -13,7 +13,7 @@ const Avatar = styled.img`
   height: 48px;
 `;
 
-export default ({ to, avatar }) => (
+export default ({ to, avatar }: { to: string, avatar: string }) => (
   <Follower>
     <Link exact to={to}>
       <Avatar src={avatar} />

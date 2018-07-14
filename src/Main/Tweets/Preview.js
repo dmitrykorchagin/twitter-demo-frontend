@@ -35,7 +35,17 @@ const WebSite = styled.span`
 `;
 
 export default ({
-  id, image, title, description, url,
+  id,
+  image,
+  title,
+  description,
+  url,
+}: {
+  id: number,
+  image: string,
+  title: string,
+  description: string,
+  url: string,
 }) => (
   <Preview key={id}>
     {image && <Image src={image} />}

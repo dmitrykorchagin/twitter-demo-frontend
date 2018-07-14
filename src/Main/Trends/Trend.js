@@ -29,7 +29,15 @@ const Description = styled.span`
 const Count = Description.extend``;
 
 export default ({
-  topic, to, description, count,
+  topic,
+  to,
+  description,
+  count,
+}: {
+  topic: string,
+  to: string,
+  description: string,
+  count: number,
 }) => (
   <Trend>
     <TrendLink exact to={to}>
@@ -40,7 +48,7 @@ export default ({
       {description}
     </Description>
     )}
-    {count && (
+    {count > 0 && (
       <Count>
         {count}
         Tweets

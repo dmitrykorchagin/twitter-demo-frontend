@@ -86,7 +86,15 @@ const FollowButton = styled.button`
 `;
 
 export default ({
-  avatar, name, official, id,
+  avatar,
+  name,
+  official,
+  id,
+}: {
+  avatar: string,
+  name: string,
+  official: boolean,
+  id: number,
 }) => (
   <RecommendFollowers>
     <NickBox>

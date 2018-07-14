@@ -74,7 +74,15 @@ const Dropmenu = styled.button`
 `;
 
 export default ({
-  user, count, following, followers,
+  user,
+  count,
+  following,
+  followers,
+}: {
+  user: string,
+  count: number,
+  following: number,
+  followers: number,
 }) => (
   <Statistics>
     <Grid>

@@ -132,6 +132,8 @@ const TweetBtn = styled.button`
   outline: none;
 `;
 
+const processEnv = process.env.PUBLIC_URL || '';
+
 export default () => (
   <HeaderWrapper>
     <Grid>
@@ -163,7 +165,7 @@ export default () => (
             </SearchBtn>
           </HeaderForm>
           <AvatarLink>
-            <Avatar src={`${process.env.PUBLIC_URL}/img/avatar-menu.jpg`} />
+            <Avatar src={`${processEnv}/img/avatar-menu.jpg`} />
           </AvatarLink>
           <TweetBtn>
 Tweet

@@ -140,11 +140,20 @@ export default ({
   displayName,
   username,
   note,
-  location,
   followed,
   url,
   created,
   official,
+}: {
+  id: number,
+  avatar: string,
+  displayName: string,
+  username: string,
+  note: string,
+  followed: boolean,
+  url: string,
+  created: string,
+  official: boolean,
 }) => (
   <Description>
     <ProfileInfo>
@@ -170,9 +179,9 @@ Follows you
 
     <About dangerouslySetInnerHTML={{ __html: note }} />
     <Location>
-      {location && <LocationIcon src={locationIcon} alt="location icon" />}
+      <LocationIcon src={locationIcon} alt="location icon" />
       <LocationCity>
-        {location}
+        {''}
       </LocationCity>
     </Location>
     <WebSiteLink>

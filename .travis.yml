@@ -4,7 +4,8 @@ node_js:
 cache:
   directories:
     - "node_modules" 
-script: yarn start 
+script: yarn build 
+before_deploy: npm -g install now
 deploy:
   - provider: script
     script: now --public --token $NOW_TOKEN -e REACT_APP_ACCESS_TOKEN=$REACT_APP_ACCESS_TOKEN

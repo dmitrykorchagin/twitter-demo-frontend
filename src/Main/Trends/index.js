@@ -41,7 +41,46 @@ const List = styled.ul`
   margin: 0;
 `;
 
-export default ({ data }) => (
+const trendsData = [
+  {
+    topic: '#BringYourDogToWorkDay',
+    to: '/linktrend',
+    description: '',
+    count: 0,
+  },
+  {
+    topic: '#FridayFeeling"',
+    to: '/linktrend',
+    count: 12100,
+    description: '',
+  },
+  {
+    topic: '#BrexitAnniversary',
+    to: '/linktrend',
+    description: 'It’s one year since the UK voted to leave the European Union',
+    count: 0,
+  },
+  {
+    topic: 'HMS Queen Elizabeth',
+    to: '/linktrend',
+    count: 1036,
+    description: '',
+  },
+  {
+    topic: 'Joe Budden',
+    to: '/linktrend',
+    count: 1036,
+    description: '',
+  },
+  {
+    topic: 'Trident',
+    to: '/linktrend',
+    count: 12100,
+    description: '',
+  },
+];
+
+export default () => (
   <Trends>
     <Heading>
       <Title>
@@ -53,7 +92,7 @@ Change
       </Button>
     </Heading>
     <List>
-      {data.map(trend => (
+      {trendsData.map(trend => (
         <Trend
           topic={trend.topic}
           to={trend.to}

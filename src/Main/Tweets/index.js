@@ -1,43 +1,26 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import Tweet from './Tweet';
 
 const Tweets = styled.section``;
 
-class TweetFeed extends React.Component {
-  state = {
-    tweetData: [],
-    error: false,
-  };
+class TweetFeed extends React.Component<{ userId: number }, { tweetData: Array<Object> }> {
+  state = { tweetData: [] };
 
   componentDidMount() {
     const { userId } = this.props;
-
+    const token = process.env.REACT_APP_ACCESS_TOKEN || '';
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/statuses/?access_token=${
-        process.env.REACT_APP_ACCESS_TOKEN
-      }`,
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/statuses/?access_token=${token}`,
     )
       .then(result => result.json())
-      .then(
-        response => this.setState({
-          tweetData: response,
-        }),
-        error => this.setState({ error }),
-      );
+      .then(response => this.setState({ tweetData: response }));
   }
 
   render() {
-    const {
-      tweetData, comments, envelope, error,
-    } = this.state;
-    if (error) {
-      return (
-        <h2>
-Error
-        </h2>
-      );
-    }
+    const { tweetData } = this.state;
     return (
       <Tweets>
         {tweetData.map(tweets => (
@@ -50,10 +33,10 @@ Error
             time={tweets.created_at}
             text={tweets.content}
             img={tweets.media_attachments}
-            comments={comments}
+            comments={0}
             retweets={tweets.reblogs_count}
             loves={tweets.favourites_count}
-            envelope={envelope}
+            envelope={0}
           />
         ))}
       </Tweets>
