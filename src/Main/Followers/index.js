@@ -23,6 +23,7 @@ class FollowersU extends React.Component<
   { userId: number, count: number },
   { followers: Array<Object> },
 > {
+
   state = { followers: [] };
 
   componentDidMount() {
@@ -52,4 +53,4 @@ class FollowersU extends React.Component<
   }
 }
 
-export default FollowersU;
+export default FollowersList;

@@ -34,6 +34,7 @@ const Temporary = ({ location }) => (
 class Profile extends React.Component <{ match: Object }, { userData: Object }> {
   state = { userData: {} };
 
+
   componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
@@ -51,7 +52,9 @@ class Profile extends React.Component <{ match: Object }, { userData: Object }> 
   render() {
     const { match } = this.props;
     const { id } = match.params;
+
     const { userData } = this.state;
+
     return (
       <React.Fragment>
         <Helmet>

@@ -7,6 +7,7 @@ import Tweet from './Tweet';
 const Tweets = styled.section``;
 
 class TweetFeed extends React.Component<{ userId: number }, { tweetData: Array<Object> }> {
+
   state = { tweetData: [] };
 
   componentDidMount() {
@@ -20,7 +21,9 @@ class TweetFeed extends React.Component<{ userId: number }, { tweetData: Array<O
   }
 
   render() {
+    
     const { tweetData } = this.state;
+
     return (
       <Tweets>
         {tweetData.map(tweets => (
