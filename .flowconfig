@@ -1,5 +1,6 @@
 [ignore]
 .*/node_modules/.*
+.*/build/.*
 .*/src/registerServiceWorker\.js
 .*/src/index\.js
 .*\.test\.js

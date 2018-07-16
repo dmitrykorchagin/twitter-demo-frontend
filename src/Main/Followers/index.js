@@ -19,7 +19,7 @@ const List = styled.ul`
   margin-top: 8px;
 `;
 
-class FollowersU extends React.Component<
+class FollowersList extends React.Component<
   { userId: number, count: number },
   { followers: Array<Object> },
 > {
@@ -52,4 +52,4 @@ class FollowersU extends React.Component<
   }
 }
 
-export default FollowersU;
+export default FollowersList;
