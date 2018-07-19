@@ -19,10 +19,13 @@ const List = styled.ul`
   margin-top: 8px;
 `;
 
-class FollowersList extends React.Component<
-  { userId: number, count: number },
-  { followers: Array<Object> },
-> {
+type User = { userId: number, count: number };
+
+type ObjectFollowers = { id: number, avatar: string };
+
+type ArrayFollowers = { followers: Array<ObjectFollowers> };
+
+class FollowersList extends React.Component<User, ArrayFollowers> {
   state = { followers: [] };
 
   componentDidMount() {

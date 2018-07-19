@@ -35,24 +35,24 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const processEnv = process.env.PUBLIC_URL || '';
+const publicUrl = process.env.PUBLIC_URL || '';
 
 const recommend = [
   {
-    avatar: `${processEnv}/img/ava-follower1.jpg`,
+    avatar: `${publicUrl}/img/ava-follower1.jpg`,
     name: 'FIFA.com',
     official: false,
     id: 33,
   },
 
   {
-    avatar: `${processEnv}/img/ava-follower2.jpg`,
+    avatar: `${publicUrl}/img/ava-follower2.jpg`,
     name: 'Creode',
     official: true,
     id: 44,
   },
   {
-    avatar: `${processEnv}/img/ava-follower3.jpg`,
+    avatar: `${publicUrl}/img/ava-follower3.jpg`,
     name: 'numiko',
     official: false,
     id: 55,
