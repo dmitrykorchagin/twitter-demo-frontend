@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { format } from 'date-fns';
 import Action from './Action';
+import Preview from './Preview';
 import commentsIcon from '../img/comments.svg';
 import retweetIcon from '../img/retweet.svg';
 import lovesIcon from '../img/loves.svg';
@@ -30,12 +31,12 @@ const TweetWrap = styled.div`
   padding: 5px 10px 15px 71px;
 
   &:hover {
-    background: #F5F8FA;
+    background: #f5f8fa;
     cursor: pointer;
   }
 `;
 
-const Tweet = styled.div`
+const StTweet = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 5px;
@@ -73,6 +74,18 @@ const Avatar = styled.img`
 const Text = styled.p`
   font-size: 25px;
   font-weight: 300;
+  margin: 5px 0 10px;
+
+  p {
+    margin: 0;
+    a {
+      color: #1da1f2;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 `;
 
 const TweetImg = styled.img`
@@ -87,50 +100,83 @@ const ActionList = styled.ul`
   margin: 0;
 `;
 
-export default ({
-  pinned,
-  nick,
-  atNick,
-  avatar,
-  time,
-  text,
-  img,
-  comments,
-  retweets,
-  loves,
-  envelope,
-}) => (
-  <TweetWrap>
-    {pinned && (
-      <PinnedTweet>
-        <PinnedIcon src={pinnedIcon} />
-        Pinned Post
-      </PinnedTweet>
-    )}
-    <Tweet>
-      <Header>
-        <Nick>
-          {nick}
-        </Nick>
-        <AtNick>
-          {atNick}
-        </AtNick>
-        <Time>
-          •
-          {format(time, 'DD MMM')}
-        </Time>
-        <Avatar src={avatar} />
-      </Header>
-      <Text>
-        {text}
-      </Text>
-      {img && <TweetImg src={img} alt="post image" />}
-    </Tweet>
-    <ActionList>
-      <Action icon={commentsIcon} count={comments > 0 && comments} alt="comments icon" />
-      <Action icon={retweetIcon} count={retweets > 0 && retweets} alt="retweet icon" />
-      <Action icon={lovesIcon} count={loves > 0 && loves} alt="loves icon" />
-      <Action icon={envelopeIcon} count={envelope > 0 && envelope} alt="envelope icon" />
-    </ActionList>
-  </TweetWrap>
-);
+class Tweet extends React.Component {
+  state = {
+    preview: [],
+  };
+
+  componentDidMount() {
+    const { id } = this.props;
+    fetch(
+      `https://twitter-demo.erodionov.ru/api/v1/statuses/${id}/card?access_token=${
+        process.env.REACT_APP_ACCESS_TOKEN
+      }
+      `,
+    )
+      .then(result => result.json())
+      .then(response => this.setState({ preview: response }));
+  }
+
+  render() {
+    const { preview } = this.state;
+    const {
+      id,
+      nick,
+      user,
+      avatar,
+      text,
+      time,
+      pinned,
+      img,
+      retweets,
+      loves,
+      comments,
+      envelope,
+    } = this.props;
+    return (
+      <TweetWrap key={id}>
+        {pinned && (
+          <PinnedTweet>
+            <PinnedIcon src={pinnedIcon} />
+            Pinned Post
+          </PinnedTweet>
+        )}
+        <StTweet>
+          <Header>
+            <Nick>
+              {nick}
+            </Nick>
+            <AtNick>
+              @
+              {user}
+            </AtNick>
+            <Time>
+              •
+              {format(time, 'DD MMM')}
+            </Time>
+            <Avatar src={avatar} />
+          </Header>
+          <Text dangerouslySetInnerHTML={{ __html: text }} />
+          {img.map(imgs => <TweetImg src={imgs.preview_url} alt="post image" />)}
+          {preview.url && (
+            <Preview
+              id={preview.id}
+              image={preview.image}
+              title={preview.title}
+              description={preview.description}
+              url={preview.url}
+            />
+          )}
+        </StTweet>
+        <ActionList>
+          <Action icon={commentsIcon} count={comments > 0 && comments} alt="comments icon" />
+          <Action icon={retweetIcon} count={retweets > 0 && retweets} alt="retweet icon" />
+          <Action icon={lovesIcon} count={loves > 0 && loves} alt="loves icon" />
+          <Action icon={envelopeIcon} count={envelope > 0 && envelope} alt="envelope icon" />
+        </ActionList>
+      </TweetWrap>
+    );
+  }
+}
+
+export default Tweet;

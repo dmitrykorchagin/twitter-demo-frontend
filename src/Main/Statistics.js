@@ -73,7 +73,9 @@ const Dropmenu = styled.button`
   background: url(${more}) no-repeat center;
 `;
 
-export default ({ user }) => (
+export default ({
+  user, count, following, followers,
+}) => (
   <Statistics>
     <Grid>
       <Row>
@@ -85,7 +87,7 @@ export default ({ user }) => (
 Tweets
               </Text>
               <Amount>
-8,058
+                {count}
               </Amount>
             </ProfileNavLink>
             <ProfileNavLink exact to={`/${user}/following`}>
@@ -93,7 +95,7 @@ Tweets
 Following
               </Text>
               <Amount>
-721
+                {following}
               </Amount>
             </ProfileNavLink>
             <ProfileNavLink exact to={`/${user}/followers`}>
@@ -101,7 +103,7 @@ Following
 Followers
               </Text>
               <Amount>
-1,815
+                {followers}
               </Amount>
             </ProfileNavLink>
             <ProfileNavLink exact to={`/${user}/likes`}>

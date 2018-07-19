@@ -24,7 +24,7 @@ export default () => (
     <React.Fragment>
       <Header />
       <Switch>
-        <Redirect exact from="/" to="/EveryInteract" />
+        <Redirect exact from="/" to="/1" />
         <Route path="/moments" component={Temporary} />
         <Route path="/notifications" component={Temporary} />
         <Route path="/messages" component={Temporary} />
@@ -35,7 +35,7 @@ export default () => (
         <Route exact path="/cookies" component={Temporary} />
         <Route exact path="/adsinfo" component={Temporary} />
         <Route exact path="/search" component={Temporary} />
-        <Route path="/:user" component={Main} />
+        <Route path="/:id" component={Main} />
       </Switch>
     </React.Fragment>
   </BrowserRouter>

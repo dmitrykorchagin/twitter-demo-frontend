@@ -1,28 +1,47 @@
 import React from 'react';
 import styled from 'styled-components';
-import TweetNavigation from './TweetNavigation';
 import Tweet from './Tweet';
 
-const Tweets = styled.section`
-  margin-top: 10px;
-`;
+const Tweets = styled.section``;
 
-export default ({ data, user }) => (
-  <Tweets>
-    <TweetNavigation user={`${user}`} />
-    {data.map(tweets => (
-      <Tweet
-        pinned={tweets.pinned}
-        nick={tweets.nick}
-        user={tweets.user}
-        avatar={tweets.avatar}
-        time={tweets.time}
-        text={tweets.text}
-        img={tweets.img}
-        comments={tweets.comments}
-        retweets={tweets.retweets}
-        loves={tweets.loves}
-      />
-    ))}
-  </Tweets>
-);
+class TweetFeed extends React.Component {
+  state = { tweetData: [] };
+
+  componentDidMount() {
+    const { userId } = this.props;
+
+    fetch(
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/statuses/?access_token=${
+        process.env.REACT_APP_ACCESS_TOKEN
+      }`,
+    )
+      .then(result => result.json())
+      .then(response => this.setState({ tweetData: response }));
+  }
+
+  render() {
+    const { tweetData, comments, envelope } = this.state;
+    return (
+      <Tweets>
+        {tweetData.map(tweets => (
+          <Tweet
+            id={tweets.id}
+            pinned={tweets.pinned}
+            nick={tweets.account.display_name}
+            user={tweets.account.username}
+            avatar={tweets.account.avatar}
+            time={tweets.created_at}
+            text={tweets.content}
+            img={tweets.media_attachments}
+            comments={comments}
+            retweets={tweets.reblogs_count}
+            loves={tweets.favourites_count}
+            envelope={envelope}
+          />
+        ))}
+      </Tweets>
+    );
+  }
+}
+
+export default TweetFeed;

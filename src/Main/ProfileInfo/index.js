@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
 import tickIcon from '../img/tick.svg';
 import locationIcon from '../img/location.svg';
 import linkIcon from '../img/link.svg';
@@ -52,6 +53,10 @@ const About = styled.div`
   line-height: 20px;
   color: #14171a;
   padding-right: 18px;
+
+  p {
+    margin: 0;
+  }
 `;
 
 const LocationIcon = styled.img`
@@ -130,7 +135,16 @@ const AvatarImage = styled.img`
 `;
 
 export default ({
-  id, name, official, followed, about, location, link, joined, avatar,
+  id,
+  avatar,
+  displayName,
+  username,
+  note,
+  location,
+  followed,
+  url,
+  created,
+  official,
 }) => (
   <Description>
     <ProfileInfo>
@@ -138,24 +152,23 @@ export default ({
         <AvatarImage src={avatar} />
       </ProfileAvatar>
     </ProfileInfo>
-    <NickLink to={`/${id}`}>
-      {name}
+    <NickLink to={`${id}`}>
+      {displayName}
     </NickLink>
     {official && <Tick src={tickIcon} alt="Verified Profile" />}
 
-    <FollowLink to={`/${id}`}>
+    <FollowLink to={`${id}`}>
       @
-      {id}
+      {username}
     </FollowLink>
+
     {followed && (
     <Follow>
 Follows you
     </Follow>
     )}
 
-    <About>
-      {about}
-    </About>
+    <About dangerouslySetInnerHTML={{ __html: note }} />
     <Location>
       {location && <LocationIcon src={locationIcon} alt="location icon" />}
       <LocationCity>
@@ -163,15 +176,15 @@ Follows you
       </LocationCity>
     </Location>
     <WebSiteLink>
-      {link && <LinkIcon src={linkIcon} alt="link icon" />}
-      <LinkAdress href={link}>
-        {link}
+      <LinkIcon src={linkIcon} alt="link icon" />
+      <LinkAdress href="link">
+        {url}
       </LinkAdress>
     </WebSiteLink>
     <Joined>
       <JoinedIcon src={joinedIcon} alt="calendar" />
       <JoinedDate>
-        {joined}
+        {format(created, 'DD MMMM YYYY')}
       </JoinedDate>
     </Joined>
 
