@@ -31,7 +31,28 @@ const Temporary = ({ location }) => (
   </h1>
 );
 
-class Profile extends React.Component <{ match: Object }, { userData: Object }> {
+type UserData = {
+  id: number,
+  avatar: string,
+  acct: string,
+  display_name: string,
+  locked: boolean,
+  bot: boolean,
+  created_at: string,
+  note: string,
+  url: string,
+  avatar: string,
+  avatar_static: string,
+  header: string,
+  header_static: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  emojis: (?Object)[],
+  fields: (?Object)[],
+}
+
+class Profile extends React.Component <{ match: Object }, UserData> {
   state = { userData: {} };
 
   componentDidMount() {

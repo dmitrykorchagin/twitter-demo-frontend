@@ -21,7 +21,26 @@ const List = styled.ul`
 
 type User = { userId: number, count: number };
 
-type ObjectFollowers = { id: number, avatar: string };
+type ObjectFollowers = {
+  id: number,
+  avatar: string,
+  acct: string,
+  display_name: string,
+  locked: boolean,
+  bot: boolean,
+  created_at: string,
+  note: string,
+  url: string,
+  avatar: string,
+  avatar_static: string,
+  header: string,
+  header_static: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  emojis: (?Object)[],
+  fields: (?Object)[],
+};
 
 type ArrayFollowers = { followers: Array<ObjectFollowers> };
 
