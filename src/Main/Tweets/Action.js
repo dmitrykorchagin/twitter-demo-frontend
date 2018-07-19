@@ -18,7 +18,7 @@ const Count = styled.span`
   margin-left: 10px;
 `;
 
-export default ({ icon, count, alt }) => (
+export default ({ icon, count, alt }: { icon: string, count: number, alt: string }) => (
   <Action>
     <Icon src={icon} alt={alt} />
     <Count>

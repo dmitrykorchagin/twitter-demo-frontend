@@ -19,15 +19,39 @@ const List = styled.ul`
   margin-top: 8px;
 `;
 
-class FollowersList extends React.Component {
+type User = { userId: number, count: number };
+
+type ObjectFollowers = {
+  id: number,
+  avatar: string,
+  acct: string,
+  display_name: string,
+  locked: boolean,
+  bot: boolean,
+  created_at: string,
+  note: string,
+  url: string,
+  avatar: string,
+  avatar_static: string,
+  header: string,
+  header_static: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  emojis: (?Object)[],
+  fields: (?Object)[],
+};
+
+type ArrayFollowers = { followers: Array<ObjectFollowers> };
+
+class FollowersList extends React.Component<User, ArrayFollowers> {
   state = { followers: [] };
 
   componentDidMount() {
     const { userId } = this.props;
+    const token = process.env.REACT_APP_ACCESS_TOKEN || '';
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/followers/?access_token=${
-        process.env.REACT_APP_ACCESS_TOKEN
-      }`,
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/followers/?access_token=${token}`,
     )
       .then(result => result.json())
       .then(response => this.setState({ followers: response }));

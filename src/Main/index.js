@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { Route, Switch } from 'react-router-dom';
@@ -12,10 +13,6 @@ import Tweets from './Tweets';
 import WhoToFollow from './WhoToFollow';
 import Trends from './Trends';
 import Footer from './Footer';
-
-import suggestedUsers from '../data/suggestedUsers';
-import media from '../data/media';
-import trends from '../data/trends';
 
 const Main = styled.main`
   background: #e6ecf0;
@@ -34,15 +31,38 @@ const Temporary = ({ location }) => (
   </h1>
 );
 
-class Profile extends React.Component {
-  state = { userData: [] };
+type UserData = {
+  id: number,
+  avatar: string,
+  acct: string,
+  display_name: string,
+  locked: boolean,
+  bot: boolean,
+  created_at: string,
+  note: string,
+  url: string,
+  avatar: string,
+  avatar_static: string,
+  header: string,
+  header_static: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  emojis: (?Object)[],
+  fields: (?Object)[],
+}
+
+class Profile extends React.Component <{ match: Object }, UserData> {
+  state = { userData: {} };
 
   componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
+    const token = process.env.REACT_APP_ACCESS_TOKEN || '';
+
     fetch(
       `https://twitter-demo.erodionov.ru/api/v1/accounts/${id}?access_token=${
-        process.env.REACT_APP_ACCESS_TOKEN
+        token
       }`,
     )
       .then(result => result.json())
@@ -52,7 +72,7 @@ class Profile extends React.Component {
   render() {
     const { match } = this.props;
     const { id } = match.params;
-    const { userData, location } = this.state;
+    const { userData } = this.state;
     return (
       <React.Fragment>
         <Helmet>
@@ -79,12 +99,11 @@ class Profile extends React.Component {
                   displayName={userData.display_name}
                   created={userData.created_at}
                   url={userData.url}
-                  location={location}
                   followed={false}
                   official={false}
                 />
                 <Followers userId={id} count={userData.followers_count} />
-                <Media data={media} />
+                <Media />
               </Col>
               <Col lg={6}>
                 <Route
@@ -127,8 +146,8 @@ Media
                 <Route exact path={`/${id}/lists`} render={Temporary} />
               </Col>
               <Col lg={3}>
-                <WhoToFollow data={suggestedUsers} />
-                <Trends data={trends} />
+                <WhoToFollow />
+                <Trends />
                 <Footer />
               </Col>
             </Row>

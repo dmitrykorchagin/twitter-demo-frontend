@@ -18,7 +18,7 @@ const TitleLink = styled(Link)`
   line-height: 16px;
 `;
 
-export default ({ icon, to, children }) => (
+export default ({ icon, to, children }: { icon: string, to: string, children: string }) => (
   <SideHeading>
     <Icon src={icon} />
     <TitleLink exact to={to}>

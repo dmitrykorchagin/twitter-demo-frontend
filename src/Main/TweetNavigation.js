@@ -36,7 +36,7 @@ const Link = styled(NavLink)`
   }
 `;
 
-export default ({ user }) => (
+export default ({ user }: { user: string }) => (
   <List>
     <Navigation>
       <Link exact to={`/${user}`}>

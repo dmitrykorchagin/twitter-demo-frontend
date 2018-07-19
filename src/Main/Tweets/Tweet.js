@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { format } from 'date-fns';
@@ -100,17 +101,32 @@ const ActionList = styled.ul`
   margin: 0;
 `;
 
-class Tweet extends React.Component {
+class Tweet extends React.Component<
+  {
+    id: number,
+    nick: string,
+    user: string,
+    avatar: string,
+    text: string,
+    time: string,
+    pinned: boolean,
+    img: Array<Object>,
+    retweets: number,
+    loves: number,
+    envelope: number,
+    comments: number,
+  },
+  { preview: Object },
+> {
   state = {
-    preview: [],
+    preview: {},
   };
 
   componentDidMount() {
     const { id } = this.props;
+    const token = process.env.REACT_APP_ACCESS_TOKEN || '';
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/statuses/${id}/card?access_token=${
-        process.env.REACT_APP_ACCESS_TOKEN
-      }
+      `https://twitter-demo.erodionov.ru/api/v1/statuses/${id}/card?access_token=${token}
       `,
     )
       .then(result => result.json())
@@ -169,10 +185,10 @@ class Tweet extends React.Component {
           )}
         </StTweet>
         <ActionList>
-          <Action icon={commentsIcon} count={comments > 0 && comments} alt="comments icon" />
-          <Action icon={retweetIcon} count={retweets > 0 && retweets} alt="retweet icon" />
-          <Action icon={lovesIcon} count={loves > 0 && loves} alt="loves icon" />
-          <Action icon={envelopeIcon} count={envelope > 0 && envelope} alt="envelope icon" />
+          <Action icon={commentsIcon} count={comments} alt="comments icon" />
+          <Action icon={retweetIcon} count={retweets} alt="retweet icon" />
+          <Action icon={lovesIcon} count={loves} alt="loves icon" />
+          <Action icon={envelopeIcon} count={envelope} alt="envelope icon" />
         </ActionList>
       </TweetWrap>
     );

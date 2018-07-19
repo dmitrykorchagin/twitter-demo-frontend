@@ -35,7 +35,31 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-export default ({ data }) => (
+const publicUrl = process.env.PUBLIC_URL || '';
+
+const recommend = [
+  {
+    avatar: `${publicUrl}/img/ava-follower1.jpg`,
+    name: 'FIFA.com',
+    official: false,
+    id: 33,
+  },
+
+  {
+    avatar: `${publicUrl}/img/ava-follower2.jpg`,
+    name: 'Creode',
+    official: true,
+    id: 44,
+  },
+  {
+    avatar: `${publicUrl}/img/ava-follower3.jpg`,
+    name: 'numiko',
+    official: false,
+    id: 55,
+  },
+];
+
+export default () => (
   <WhoToFollow>
     <Heading>
       <Title>
@@ -50,7 +74,7 @@ Refresh
 View all
       </Button>
     </Heading>
-    {data.map(user => (
+    {recommend.map(user => (
       <RecommendFollowers
         id={user.id}
         name={user.name}
