@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Helmet from 'react-helmet';
@@ -13,6 +14,7 @@ import Tweets from './Tweets';
 import WhoToFollow from './WhoToFollow';
 import Trends from './Trends';
 import Footer from './Footer';
+import userDataFetchData from '../actions';
 
 const Main = styled.main`
   background: #e6ecf0;
@@ -50,29 +52,25 @@ type UserData = {
   statuses_count: number,
   emojis: (?Object)[],
   fields: (?Object)[],
-}
+};
 
-class Profile extends React.Component <{ match: Object }, UserData> {
-  state = { userData: {} };
-
+class Profile extends React.Component<{ match: Object }, UserData> {
   componentDidMount() {
-    const { match } = this.props;
-    const { id } = match.params;
+    const {
+      match: {
+        params: { id },
+      },
+      fetchDataInfo,
+    } = this.props;
     const token = process.env.REACT_APP_ACCESS_TOKEN || '';
 
-    fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${id}?access_token=${
-        token
-      }`,
-    )
-      .then(result => result.json())
-      .then(response => this.setState({ userData: response }));
+    fetchDataInfo(`https://twitter-demo.erodionov.ru/api/v1/accounts/${id}?access_token=${token}`);
   }
 
   render() {
     const { match } = this.props;
     const { id } = match.params;
-    const { userData } = this.state;
+    const { userData } = this.props;
     return (
       <React.Fragment>
         <Helmet>
@@ -158,4 +156,13 @@ Media
   }
 }
 
-export default Profile;
+const mapStateToProps = state => ({ userData: state.userData });
+
+const mapDispatchToProps = dispatch => ({
+  fetchDataInfo: url => dispatch(userDataFetchData(url)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Profile);
