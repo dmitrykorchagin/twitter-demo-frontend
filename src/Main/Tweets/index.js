@@ -3,83 +3,58 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import userDataFetchData from '../../actions';
 import Tweet from './Tweet';
+import type { UserData, TweetData } from '../types';
 
 const Tweets = styled.section``;
 
-type UserData = {
-  id: string,
-  username: string,
-  avatar: string,
-  acct: string,
-  display_name: string,
-  locked: boolean,
-  bot: boolean,
-  created_at: string,
-  note: string,
-  url: string,
-  avatar: string,
-  avatar_static: string,
-  header: string,
-  header_static: string,
-  followers_count: number,
-  following_count: number,
-  statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
-  error?: string,
+type Props = {
+  userData: UserData,
 };
 
-type Props = { userData: UserData };
-
 type State = {
-  tweetData: Array<{
-    id: string,
-    created_at: string,
-    in_reply_to_id: ?string,
-    in_reply_to_account_id: ?string,
-    sensitive: boolean,
-    spoiler_text: string,
-    visibility: string,
-    language: string,
-    uri: string,
-    content: string,
-    url: string,
-    reblogs_count: number,
-    favourites_count: number,
-    favourited: boolean,
-    reblogged: boolean,
-    muted: boolean,
-    pinned: boolean,
-    reblog: ?string,
-    application: Object,
-    account: Object,
-    media_attachments: Array<Object>,
-    mentions: (?Object)[],
-    tags: (?Object)[],
-    emojis: (?Object)[],
-  }>,
+  tweetData: TweetData,
   error: ?Object,
 };
 
 class TweetFeed extends React.Component<Props, State> {
-  state = { tweetData: [] };
+  state = { tweetData: [], error: null };
 
   componentDidMount() {
-    const { userId } = this.props;
-
+    const { userData } = this.props;
     const token = process.env.REACT_APP_ACCESS_TOKEN || '';
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/statuses/?access_token=${token}`,
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${
+        userData.id
+      }/statuses/?access_token=${token}`,
     )
       .then(result => result.json())
-      .then(response => this.setState({ tweetData: response }));
+      .then(
+        (response) => {
+          this.setState({
+            tweetData: response,
+          });
+        },
+        (error) => {
+          this.setState({
+            error,
+          });
+        },
+      );
   }
 
   render() {
-    const { tweetData } = this.state;
+    const { tweetData, error } = this.state;
     const { userData } = this.props;
+
+    if (error) {
+      return (
+        <div>
+          Error:
+          {error.message}
+        </div>
+      );
+    }
 
     return (
       <Tweets>
@@ -106,11 +81,4 @@ class TweetFeed extends React.Component<Props, State> {
 
 const mapStateToProps = state => ({ userData: state.userData });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: url => dispatch(userDataFetchData(url)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(TweetFeed);
+export default connect(mapStateToProps)(TweetFeed);

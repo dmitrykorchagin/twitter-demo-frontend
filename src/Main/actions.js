@@ -5,16 +5,10 @@ function userDataFetch(userData) {
   };
 }
 
-export default function userDataFetchData(url) {
+export default function userDataFetchData(id) {
   return (dispatch) => {
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw Error(response.statusMessage);
-        }
-
-        return response;
-      })
+    const token = process.env.REACT_APP_ACCESS_TOKEN || '';
+    fetch(`https://twitter-demo.erodionov.ru/api/v1/accounts/${id}?access_token=${token}`)
       .then(response => response.json())
       .then(userData => dispatch(userDataFetch(userData)));
   };
