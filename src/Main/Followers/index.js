@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import Follower from './Follower';
+import type { UserData, FollowersData } from '../types';
 import SidebarHeading from '../SidebarHeading';
 import followersIcon from '../img/followers.svg';
 
@@ -19,59 +21,49 @@ const List = styled.ul`
   margin-top: 8px;
 `;
 
-type User = { userId: number, count: number };
+type Props = { userData: UserData };
 
-type ObjectFollowers = {
-  id: number,
-  avatar: string,
-  acct: string,
-  display_name: string,
-  locked: boolean,
-  bot: boolean,
-  created_at: string,
-  note: string,
-  url: string,
-  avatar: string,
-  avatar_static: string,
-  header: string,
-  header_static: string,
-  followers_count: number,
-  following_count: number,
-  statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
-};
+type State = { followers: FollowersData };
 
-type ArrayFollowers = { followers: Array<ObjectFollowers> };
-
-class FollowersList extends React.Component<User, ArrayFollowers> {
+class FollowersList extends React.Component<Props, State> {
   state = { followers: [] };
 
-  componentDidMount() {
-    const { userId } = this.props;
+  componentDidUpdate() {
+    this.getFollowers();
+  }
+
+  getFollowers = () => {
+    const { userData } = this.props;
     const token = process.env.REACT_APP_ACCESS_TOKEN || '';
     fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${userId}/followers/?access_token=${token}`,
+      `https://twitter-demo.erodionov.ru/api/v1/accounts/${
+        userData.id
+      }/followers/?access_token=${token}`,
     )
       .then(result => result.json())
       .then(response => this.setState({ followers: response }));
-  }
+  };
 
   render() {
-    const { userId, count } = this.props;
+    const { userData } = this.props;
     const { followers } = this.state;
-
     return (
-      <Followers>
-        <SidebarHeading icon={followersIcon} to={`/${userId}/followers_you_follow`}>
-          {`${count} Followers you know`}
-        </SidebarHeading>
-        <List>
-          {followers.map(follower => <Follower to={`/${follower.id}`} avatar={follower.avatar} />)}
-        </List>
-      </Followers>
+      <div>
+        <Followers>
+          <SidebarHeading icon={followersIcon} to={`/${userData.id}/followers_you_follow`}>
+            {`${userData.followers_count} Followers you know`}
+          </SidebarHeading>
+          <List>
+            {followers.map(follower => (
+              <Follower to={`/${follower.id}`} avatar={follower.avatar} />
+            ))}
+          </List>
+        </Followers>
+      </div>
     );
   }
 }
 
-export default FollowersList;
+const mapStateToProps = state => ({ userData: state.userData });
+
+export default connect(mapStateToProps)(FollowersList);

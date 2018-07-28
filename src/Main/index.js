@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Helmet from 'react-helmet';
@@ -13,6 +14,8 @@ import Tweets from './Tweets';
 import WhoToFollow from './WhoToFollow';
 import Trends from './Trends';
 import Footer from './Footer';
+import userDataFetchData from './actions';
+import type { UserData } from './types';
 
 const Main = styled.main`
   background: #e6ecf0;
@@ -31,48 +34,37 @@ const Temporary = ({ location }) => (
   </h1>
 );
 
-type UserData = {
-  id: number,
-  avatar: string,
-  acct: string,
-  display_name: string,
-  locked: boolean,
-  bot: boolean,
-  created_at: string,
-  note: string,
-  url: string,
-  avatar: string,
-  avatar_static: string,
-  header: string,
-  header_static: string,
-  followers_count: number,
-  following_count: number,
-  statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
+type Props = {
+  userData: UserData,
+  fetchUserData: Function,
+  dispatch: Function,
+};
+
+type Match = {
+  match: {
+    params: {
+      id: string
+    },
+    path: string,
+    url: string
+  }
 }
 
-class Profile extends React.Component <{ match: Object }, UserData> {
-  state = { userData: {} };
-
+class Profile extends React.Component<Match, Props> {
   componentDidMount() {
-    const { match } = this.props;
-    const { id } = match.params;
-    const token = process.env.REACT_APP_ACCESS_TOKEN || '';
-
-    fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/${id}?access_token=${
-        token
-      }`,
-    )
-      .then(result => result.json())
-      .then(response => this.setState({ userData: response }));
+    const {
+      match: {
+        params: { id },
+      },
+      dispatch,
+    } = this.props;
+    dispatch(userDataFetchData(id));
   }
 
   render() {
     const { match } = this.props;
     const { id } = match.params;
-    const { userData } = this.state;
+    const { userData } = this.props;
     return (
       <React.Fragment>
         <Helmet>
@@ -102,7 +94,7 @@ class Profile extends React.Component <{ match: Object }, UserData> {
                   followed={false}
                   official={false}
                 />
-                <Followers userId={id} count={userData.followers_count} />
+                <Followers />
                 <Media />
               </Col>
               <Col lg={6}>
@@ -115,8 +107,8 @@ class Profile extends React.Component <{ match: Object }, UserData> {
                       <Switch>
                         <Route
                           exact
-                          path={`/${id}/(tweets)?`}
-                          render={() => <Tweets userId={id} />}
+                          path={`/${userData.id}/(tweets)?`}
+                          render={() => <Tweets />}
                         />
                         <Route
                           exact
@@ -158,4 +150,6 @@ Media
   }
 }
 
-export default Profile;
+const mapStateToProps = state => ({ userData: state.userData });
+
+export default connect(mapStateToProps)(Profile);
